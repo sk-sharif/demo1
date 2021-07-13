@@ -8,6 +8,7 @@ pipeline {
     stage('Cloning Git') {
       steps {
           git branch: 'main', url: 'https://github.com/sk-sharif/demo1.git'
+          sh 'git checkout -b feature || true'
       }
     }
      stage('Build Unit test') {
