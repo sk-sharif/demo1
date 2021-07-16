@@ -6,7 +6,7 @@ pipeline {
         changeset "Project1/**"
       }
       steps {
-	build 'Project1'
+	build '../Project1'
       }
     }
   }
