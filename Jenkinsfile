@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 pipeline {
   agent any
   stages {
@@ -6,7 +8,7 @@ pipeline {
         changeset "Project1/**"
       }
       steps {
-	build job: '../Project1'
+	build job: 'Project1'
       }
     }
   }
