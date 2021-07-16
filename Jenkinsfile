@@ -1,18 +1,12 @@
 pipeline {
-  environment {
-    registry = "akanshagiriya/demo"
-    registryCredential = 'Docker_cred'
-  }
   agent any
   stages {
-    stage('Cloning Git') {
-      steps {
-          git branch: 'main', url: 'https://github.com/sk-sharif/demo1.git'
+    stage('Project1') {
+      when {
+        changeset "Project1/**"
       }
-    }
-     stage('Build Unit test') {
-      steps{
-        echo 'unit tests'
+      steps {
+	build 'Project1'
       }
     }
   }
