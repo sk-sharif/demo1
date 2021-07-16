@@ -8,7 +8,7 @@ pipeline {
         changeset "Project1/**"
       }
       steps {
-	build job: 'Project1'
+	build 'Project1'
       }
     }
   }
