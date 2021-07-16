@@ -9,7 +9,7 @@ pipeline {
       }
       steps {
 	script {
-	  build './Project1'
+	  build 'Project1'
 	}
       }
     }
