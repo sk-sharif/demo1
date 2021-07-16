@@ -10,7 +10,7 @@ pipeline {
       steps {
 	script {
 // 	  build 'Project1'
-	  gv = load "Project1"  
+	  gv = load "script.groovy"  
 	}
       }
     }
