@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-
+def gv
 pipeline {
   agent any
   stages {
@@ -9,7 +9,8 @@ pipeline {
       }
       steps {
 	script {
-	  build 'Project1'
+// 	  build 'Project1'
+	  gv = load "Project1/Jenkinsfile"  
 	}
       }
     }
