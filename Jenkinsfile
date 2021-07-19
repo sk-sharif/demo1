@@ -16,9 +16,10 @@ pipeline {
 //     }
 	  
 	stage('Build Release') {
-              when { tag pattern: "\\d+\\.\\d+\\.\\d", comparator: "REGEXP"}
+		when { tag "^v*", comparator: "REGEXP"}
+//               when { tag pattern: "\\d+\\.\\d+\\.\\d", comparator: "REGEXP"}
      steps {
-       echo "Building ${env.TAG_NAME}"
+       echo "Building"
      }
         }
   }
