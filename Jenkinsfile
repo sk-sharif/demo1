@@ -24,7 +24,7 @@ pipeline {
 //         }
 	  stage('Deploy') {
   when { 
-	  branch 'main'
+// 	  branch 'main'
 // 	  expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) } }
 	  buildingTag()
   }
