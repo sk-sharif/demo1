@@ -23,12 +23,7 @@ pipeline {
 //      }
 //         }
 	  stage('Deploy') {
-  when {
-	  anyOf {
-	  	branch 'main'
-		  expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) } 
-	  }
-  }
+  when { expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) } }
   steps {
     echo 'Replace this with your actual deployment steps'
   }
