@@ -18,11 +18,12 @@ pipeline {
 	  stage('') {
 		  steps {
 			  script {
-			  	if test $(git rev-parse master) = $(git rev-parse $tag^{commit}); then
-    echo "master and $tag both identify the same commit"
-else
-    echo "master and $tag identify two different commits"
-fi
+				  if (git rev-list --first-parent master | grep $tagged_commit) {
+				  	echo "done"
+				  }
+				  else {
+				  	echo "failed"
+				  }
 			  }
 		  }
 	  }
