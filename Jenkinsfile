@@ -15,16 +15,11 @@ pipeline {
 //       }
 //     }
 	  
-	  stage('') {
-		  steps {
-if (git rev-list --first-parent main | grep $tagged_commit >/dev/null) {
-				  	echo "done"
-				  }
-				  else {
-				  	echo "failed"
-				  }
-			  
-		  }
-	  }
+	stage('Build Release') {
+              when { tag pattern: "\\d+\\.\\d+\\.\\d", comparator: "REGEXP"}
+     steps {
+       echo "Building ${env.TAG_NAME}"
+     }
+        }
   }
 }
