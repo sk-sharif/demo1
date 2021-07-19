@@ -18,7 +18,7 @@ pipeline {
 	  stage('') {
 		  steps {
 			  script {
-if (git branch --contains $(git rev-list -n 1 v1.0) | grep '^main$') {
+if (git rev-list --first-parent main | grep $tagged_commit >/dev/null) {
 				  	echo "done"
 				  }
 				  else {
