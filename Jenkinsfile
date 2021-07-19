@@ -16,7 +16,7 @@ pipeline {
 //     }
 	  
 	stage('Build Release') {
-		when { tag pattern: "^b*"}
+		when { tag pattern: "b1.0.1"}
 //               when { tag pattern: "\\d+\\.\\d+\\.\\d", comparator: "REGEXP"}
      steps {
        echo "Building"
