@@ -17,14 +17,13 @@ pipeline {
 	  
 	  stage('') {
 		  steps {
-			  script {
 if (git rev-list --first-parent main | grep $tagged_commit >/dev/null) {
 				  	echo "done"
 				  }
 				  else {
 				  	echo "failed"
 				  }
-			  }
+			  
 		  }
 	  }
   }
