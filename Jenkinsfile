@@ -14,7 +14,7 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             def dockerfile = 'Dockerfile'
-            def customImage = docker.build("${registry}:${TAG_NAME}", "-f ./${dockerfile} ./")
+            def customImage = docker.build("${registry}:${BUILD_NUMBER}", "-f ./${dockerfile} ./")
 //             customImages.push()
           }
         }
@@ -31,7 +31,7 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             def dockerfile = 'Dockerfile'
-            def customImages = docker.build("${registry}:$TAG_NAME", "-f ./${dockerfile} ./")
+            def customImages = docker.build("${registry}:v4.0", "-f ./${dockerfile} ./")
             customImages.push()
           }
         }
