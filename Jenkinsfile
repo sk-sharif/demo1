@@ -30,7 +30,8 @@ pipeline {
 //       }
       steps {
         script {
-          sh 'echo sh(returnStdout: true, script: 'git tag -l --points-at HEAD').trim()'
+          env.MY_GIT_TAG = sh(returnStdout: true, script: 'git tag -l --points-at HEAD').trim()
+          echo "${env.MY_GIT_TAG}"
           docker.withRegistry( '', registryCredential ) {
 //             def dockerfile = 'Dockerfile'
 //             def customImages = docker.build("${registry}:v4.0", "-f ./${dockerfile} ./")
