@@ -32,7 +32,7 @@ pipeline {
           docker.withRegistry( '', registryCredential ) {
             def dockerfile = 'Dockerfile'
             def customImages = docker.build("${registry}:$TAG_NAME", "-f ./${dockerfile} ./")
-            def customImages.push()
+            customImages.push()
           }
         }
       }
