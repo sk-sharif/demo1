@@ -15,7 +15,7 @@ pipeline {
           docker.withRegistry( '', registryCredential ) {
 //             def dockerfile = 'Dockerfile'
 //             customImages = docker.build("${registry}:${BUILD_NUMBER}", "-f ./${dockerfile} ./")
-            customImage.push()
+            customImages.push()
           }
         }
       }
