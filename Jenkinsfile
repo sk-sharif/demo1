@@ -28,7 +28,9 @@ pipeline {
 // 	buildingTag()
       }
       steps {
-        customImages.push()
+        script {
+          customImages.push()
+        }
       }
     }
   }
