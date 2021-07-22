@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-def gv
+def customImages
 pipeline {
   agent any
   environment {
@@ -28,7 +28,7 @@ pipeline {
 // 	buildingTag()
       }
       steps {
-        echo 'Replace this with your actual deployment steps'
+        customImages.push()
       }
     }
   }
