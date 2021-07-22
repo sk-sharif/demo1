@@ -22,23 +22,14 @@ pipeline {
     }
     
     stage('Tag') {
-//       when {
+      when {
 // // 	branch 'main'
-//  	expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) || env.BRANCH == 'main' }
-// // 	buildingTag()
-        
-//       }
+ 	expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) || env.BRANCH == 'main' }
+// // 	buildingTag() 
+      }
       steps {
         script {
-          TAG = sh(returnStdout: true, script: 'git tag --points-at HEAD')
-          echo "${TAG}"
-          echo "${env.BRANCH_NAME}"
-          if(TAG && env.BRANCH_NAME == 'main') {
-            echo 'if condition'
-          }
-          else {
-            echo 'not if'
-          }
+          echo "tag"
         }
       }
     }
