@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-
+def customImages
 pipeline {
   agent any
   environment {
@@ -14,7 +14,7 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             def dockerfile = 'Dockerfile'
-            def customImage = docker.build("${registry}:${BUILD_NUMBER}", "-f ./${dockerfile} ./")
+            customImages = docker.build("${registry}:${BUILD_NUMBER}", "-f ./${dockerfile} ./")
 //             customImages.push()
           }
         }
