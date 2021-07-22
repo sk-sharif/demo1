@@ -32,6 +32,7 @@ pipeline {
         script {
           TAG = sh(returnStdout: true, script: 'git tag --points-at HEAD')
           echo "${TAG}"
+          echo "${env.BRANCH_NAME}"
           docker.withRegistry( '', registryCredential ) {
 //             def dockerfile = 'Dockerfile'
 //             def customImages = docker.build("${registry}:v4.0", "-f ./${dockerfile} ./")
