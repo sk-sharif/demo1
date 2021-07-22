@@ -14,7 +14,7 @@ pipeline {
         script {
           docker.withRegistry( '', registryCredential ) {
             def dockerfile = 'Dockerfile'
-            def customImage = docker.build("${registry}:$TAG_NAME", "-f ./${dockerfile} ./")
+            def customImage = docker.build("${registry}:${TAG_NAME}", "-f ./${dockerfile} ./")
 //             customImages.push()
           }
         }
