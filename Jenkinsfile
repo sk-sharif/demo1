@@ -33,10 +33,11 @@ pipeline {
           TAG = sh(returnStdout: true, script: 'git tag --points-at HEAD')
           echo "${TAG}"
           echo "${env.BRANCH_NAME}"
-          docker.withRegistry( '', registryCredential ) {
-//             def dockerfile = 'Dockerfile'
-//             def customImages = docker.build("${registry}:v4.0", "-f ./${dockerfile} ./")
-            customImages.push()
+          if(TAG && env.BRANCH_NAME == 'main') {
+            echo 'if condition'
+          }
+          else {
+            echo 'not if'
           }
         }
       }
