@@ -26,6 +26,7 @@ pipeline {
 // 	branch 'main'
  	expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) || env.BRANCH == 'main' }
 // 	buildingTag()
+        sh 'echo $env.BRANCH'
       }
       steps {
         script {
