@@ -30,8 +30,8 @@ pipeline {
       steps {
         script {
           docker.withRegistry( '', registryCredential ) {
-            def dockerfile = 'Dockerfile'
-            def customImages = docker.build("${registry}:v4.0", "-f ./${dockerfile} ./")
+//             def dockerfile = 'Dockerfile'
+//             def customImages = docker.build("${registry}:v4.0", "-f ./${dockerfile} ./")
             customImages.push()
           }
         }
