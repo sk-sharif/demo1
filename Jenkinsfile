@@ -22,10 +22,19 @@ pipeline {
     }
     
     stage('Tag') {
+//       when {
+// // // 	branch 'main'
+//  	expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) || env.BRANCH == 'main' }
+// // // 	buildingTag() 
+//       }
       when {
-// // 	branch 'main'
- 	expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) || env.BRANCH == 'main' }
-// // 	buildingTag() 
+        allOf {
+          branch 'main'
+          expression {
+            def isTag = sh(returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'')
+            return isTag == 0 ? true : false
+          }
+        }
       }
       steps {
         script {
