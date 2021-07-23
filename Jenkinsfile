@@ -29,7 +29,7 @@ pipeline {
 //       }
       steps {
         script {
-          if($(git rev-parse master) = $(git rev-parse $tag^{commit})) {
+          if(sh '$(git rev-parse master) = $(git rev-parse $tag^{commit})') {
             echo "master and $tag both identify the same commit"
           }
           else {
