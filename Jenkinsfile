@@ -22,23 +22,19 @@ pipeline {
     }
     
     stage('Tag') {
-      when {
-// // 	branch 'main'
- 	expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) || env.BRANCH_NAME == 'main' }
-// // 	buildingTag() 
-      }
 //       when {
-//         allOf {
-//           branch 'main'
-//           expression {
-//             def isTag = sh(returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'')
-//             return isTag == 0 ? true : false
-//           }
-//         }
+// // 	branch 'main'
+//  	expression { sh([returnStdout: true, script: 'echo $TAG_NAME | tr -d \'\n\'']) || env.BRANCH_NAME == 'main' }
+// // 	buildingTag() 
 //       }
       steps {
         script {
-          echo "tag"
+          if($(git rev-parse master) = $(git rev-parse $tag^{commit})) {
+            echo "master and $tag both identify the same commit"
+          }
+          else {
+            echo "master and $tag identify two different commits"
+          }
         }
       }
     }
