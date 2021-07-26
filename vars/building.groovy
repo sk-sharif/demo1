@@ -1,3 +1,13 @@
 def call() {
-  sh ' echo building the application'
+  pipeline {
+    agent any 
+    
+    stages {
+      stage("vars") {
+        steps {
+          sh ' echo building the application'
+        }
+      }
+    }
+  }
 }
