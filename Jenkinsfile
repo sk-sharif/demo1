@@ -1,5 +1,4 @@
-#!/usr/bin/env groovy
-def customImages
+@Library("shared-library") _
 pipeline {
   agent any
   environment {
