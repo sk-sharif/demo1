@@ -9,7 +9,7 @@ def call(body) {
     stages {
       stage('buildig') {
         steps {
-          sh 'echo pipelineParams.name building'
+          sh "echo ${pipelineParams.name} building"
         }
       }
     }
