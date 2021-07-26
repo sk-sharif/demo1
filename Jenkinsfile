@@ -1,3 +1,5 @@
 @Library("shared-library") _
 
-building(name:"demo1")
+building {
+  name = 'demo1'
+}
