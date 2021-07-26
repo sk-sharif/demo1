@@ -1,11 +1,15 @@
 def call() {
-  pipeline {
+  def pipelineParams= [:]
+  body.resolveStrategy = Closure.DELEGATE_FIRST
+  body.delegate = pipelineParams
+  body()
+  
+  pipeline{
     agent any 
-    
     stages {
-      stage("vars") {
+      stage('buildig') {
         steps {
-          sh ' echo building the application'
+          sh 'echo building'
         }
       }
     }
