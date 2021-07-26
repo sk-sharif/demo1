@@ -1,3 +1,3 @@
-// @Library("shared-library") _
+@Library("shared-library") _
 
 building()
