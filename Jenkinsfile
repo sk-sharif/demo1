@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('hello') {
       steps {
-          script()
+          building()
       }
     }
 //     stage('Build Dockerfile'){
