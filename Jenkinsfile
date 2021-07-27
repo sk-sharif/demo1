@@ -5,5 +5,5 @@ building {
 }
 
 project1 {
-//   name = 'project1'
+  name = 'project1'
 }
