@@ -21,7 +21,8 @@ pipeline {
         script {
           docker.withRegistry('', registryCredential) {
             def dockerfile = 'Dockerfile'
-            def customImage = docker.build("${registry}:${BUILD_NUMBER}", "-a ${HOME}" ,"-f ./${dockerfile} .")
+//             def customImage = docker.build("${registry}:${BUILD_NUMBER}","-f ./${dockerfile} .")
+            def customImage = docker build -t ${registry}:latest --build-arg ${HOME} .
 //             customImage.push()
           }
         }
