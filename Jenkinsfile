@@ -12,6 +12,7 @@ pipeline {
  environment{
    registry = "akanshagiriya/demmo"
     registryCredential = 'Docker_cred'
+   HOME = 'hi'
  }
   
   stages {
@@ -20,8 +21,8 @@ pipeline {
         script {
           docker.withRegistry('', registryCredential) {
             def dockerfile = 'Dockerfile'
-            def customImage = docker.build("${registry}:${BUILD_NUMBER}", "-f ./${dockerfile} .")
-            customImage.push()
+            def customImage = docker.build("${registry}:${BUILD_NUMBER}", "-a ${HOME}" ,"-f ./${dockerfile} .")
+//             customImage.push()
           }
         }
 
