@@ -10,6 +10,7 @@
 pipeline {
   agent any
  environment{
+   registry = "akanshagiriya/demmo"
     registryCredential = 'Docker_cred'
  }
   
