@@ -23,7 +23,7 @@ pipeline {
 //           sh 'echo ${GIT_COMMIT}'
           docker.withRegistry( '', registryCredential ) {
             def dockerfile = 'Dockerfile '
-            customImage = docker.build("${registry}:we-${GIT_COMMIT}", "-f ./${dockerfile} .")
+            customImage = docker.build("${registry}:WE-${GIT_COMMIT}", "-f ./${dockerfile} .")
             customImage.push()
           }
         }
