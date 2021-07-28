@@ -1,0 +1,201 @@
+def call(body)
+{
+    def pipelineParams= [:]
+    body.resolveStrategy = Closure.DELEGATE_FIRST
+    body.delegate = pipelineParams
+    body()
+pipeline {
+  agent any
+  environment {
+    registry = "sarosejoshi/mm"
+    registryCredential = 'Docker_cred'
+    customImage = ''
+    ACCESS_TOKEN = credentials("access-token")
+    DOCKER_BUILDKIT='1'
+  }    
+  stages {
+    stage('Lint') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          docker.build("${registry}:${GIT_COMMIT}", "--build-arg ACCESS_TOKEN=${ACCESS_TOKEN} -f Dockerfile.Github --target lint .") 
+        }
+      }
+    }
+    stage('Unit Testing') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          sh 'echo Testing'
+        }
+      }
+    }
+    stage('Build Docker image') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          def dockerfile = 'Dockerfile.Github '
+          customImage = docker.build("${registry}:${GIT_COMMIT}", "-f ./${dockerfile} .")
+        }
+      }
+    }
+    stage('push Docker image') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            customImage.push()
+          }
+        }
+      }
+    }
+    stage('Release Tag') {
+      when {
+        expression {
+          env.TAG_NAME != null
+        }
+      }
+      steps {
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            sh '''
+              DOCKER_BUILDKIT=1 docker build -t ${registry}:${TAG_NAME} -f Dockerfile.Github --build-arg ACCESS_TOKEN=$ACCESS_TOKEN .
+              docker push ${registry}:${TAG_NAME}
+            '''
+          }
+        }
+      }
+    }
+// Dockerfile of PC
+    stage('Lint for DockerfilePC') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          docker.build("${registry}:${GIT_COMMIT}", "--build-arg ACCESS_TOKEN=${ACCESS_TOKEN} -f Dockerfile.PC --target lint .") 
+        }
+      }
+    }
+    stage('Unit Testing for DockerfilePC') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          sh 'echo Testing'
+        }
+      }
+    }
+    stage('Build Docker image for DockerfilePC') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          def dockerfile = 'Dockerfile.PC'
+          customImage = docker.build("${registry}:PC-${GIT_COMMIT}", "-f ./${dockerfile} .")
+        }
+      }
+    }                                
+    stage('push Docker image DockerfilePC') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            customImage.push()
+          }
+        }
+      }
+    }
+    stage('Release Tag For PC Service') {
+      when {
+        expression {
+          env.TAG_NAME != null
+        }
+      }
+      steps {
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            sh '''
+              DOCKER_BUILDKIT=1 docker build -t ${registry}:PC-${TAG_NAME} -f Dockerfile.PC --build-arg ACCESS_TOKEN=$ACCESS_TOKEN .
+              docker push ${registry}:PC-${TAG_NAME}
+            '''
+          }
+        }
+      }
+  }
+// Dockerfile of WL
+    stage('Lint for DockerfileWL') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          docker.build("${registry}:${GIT_COMMIT}", "--build-arg ACCESS_TOKEN=${ACCESS_TOKEN} -f Dockerfile.WL --target lint .") 
+        }
+      }
+    }
+    stage('Unit Testing for DockerfileWL') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          sh 'echo Testing'
+        }
+      }
+    }
+    stage('Build Docker image for DockerfileWL') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          def dockerfile = 'Dockerfile.WL'
+          customImage = docker.build("${registry}:WL-${GIT_COMMIT}", "-f ./${dockerfile} .")
+        }
+      }
+    }                                
+    stage('push Docker image DockerfileWL') {
+      when {
+        branch 'master'
+      }
+      steps {
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            customImage.push()
+          }
+        }
+      }
+    }
+    stage('Release Tag For WL Service') {
+      when {
+        expression {
+          env.TAG_NAME != null
+        }
+      }
+      steps {
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            sh '''
+              DOCKER_BUILDKIT=1 docker build -t ${registry}:WL-${TAG_NAME} -f Dockerfile.WL --build-arg ACCESS_TOKEN=$ACCESS_TOKEN .
+              docker push ${registry}:WL-${TAG_NAME}
+            '''
+          }
+        }
+      }
+    }
+  }
+}
+}
