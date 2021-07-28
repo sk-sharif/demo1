@@ -19,8 +19,13 @@ pipeline {
     stage('Building a image for amazon-associate-etl ') {
       steps {
         script {
-          env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
-          sh 'echo ${GIT_COMMIT}'
+//           env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
+//           sh 'echo ${GIT_COMMIT}'
+          docker.withRegistry( '', registryCredential ) {
+            def dockerfile = 'Dockerfile '
+            customImage = docker.build("${registry}:we-${GIT_COMMIT}", "-f ./${dockerfile} .")
+            customImage.push()
+          }
         }
       }
     }
