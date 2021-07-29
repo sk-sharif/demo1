@@ -10,7 +10,7 @@ def call(String repoUrl) {
 //            }
 //        }
 //    }
-   
+   stages {
    stage('building') {
       steps {
         script {
@@ -18,4 +18,5 @@ def call(String repoUrl) {
         }
       }
     }
+   }
 }
