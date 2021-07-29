@@ -9,7 +9,7 @@ pipeline {
     stage('checking branch') {
       when {
         anyOf {
-          branch "${BRANCH_NAME}"
+          branch 'env.BRANCH_NAME'
         }
       }
       
