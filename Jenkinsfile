@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('checking branch') {
       when {
-        branch "${BRANCH_NAME}"
+        expression{env.BRANCH_NAME == 'main' && 'test'}
       }
       
       steps {
