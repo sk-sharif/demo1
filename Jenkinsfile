@@ -5,7 +5,6 @@
 pipeline {
   agent any 
   
-  stages {
     building 'sagar'
-  }
+  
 }
