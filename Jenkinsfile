@@ -8,9 +8,7 @@ pipeline {
   stages {
     stage('checking branch') {
       when {
-        anyOf {
           branch 'env.BRANCH_NAME'
-        }
       }
       
       steps {
