@@ -4,8 +4,8 @@ def call(String repoUrl) {
        stages {
            stage("Tools initialization") {
                steps {
-                      echo 'hello repoUrl'                       
-                      echo 'Hi repoUrl'
+                  echo "hello ${repoUrl}"                       
+                  echo "Hi ${repoUrl}"
                }
            }
        }
