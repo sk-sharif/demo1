@@ -5,6 +5,20 @@
 pipeline {
   agent any 
   
-    building 'sagar'
+  stages {
+    stage('checking branch') {
+      when {
+        anyOf {
+          branch "${BRANCH_NAME}"
+        }
+      }
+      
+      steps {
+        script {
+          echo "${BRANCH_NAME}"
+        }
+      }
+    }
+  }
   
 }
