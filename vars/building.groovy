@@ -11,6 +11,11 @@ def call(String repoUrl) {
 //        }
 //    }
    
-   echo "hello ${repoUrl}"                       
-                  echo "Hi ${repoUrl}"
+   stage('building') {
+      steps {
+        script {
+           echo "HI ${repoUrl}"
+        }
+      }
+    }
 }
