@@ -6,6 +6,6 @@ def add(x){
       echo 'x'
       echo "$x"
       echo '$x'
-      echo "\${x}"
+      "echo \${x}"
    '''
 }
