@@ -1,9 +1,22 @@
 def call(body) {
-//   def pipelineParams= [:]
-//   body.resolveStrategy = Closure.DELEGATE_FIRST
-//   body.delegate = pipelineParams
-//   body()
- sh "echo hi" 
+  def pipelineParams= [:]
+  body.resolveStrategy = Closure.DELEGATE_FIRST
+  body.delegate = pipelineParams
+  body()
+  
+ pipeline {
+  agent any 
+  
+  stages {
+   stage('check') {
+    steps {
+     script {
+      building(60)
+     }
+    }
+   }
+  }
+ }
 }
   
   
