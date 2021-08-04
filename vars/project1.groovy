@@ -11,7 +11,7 @@ def call(body) {
    stage('check') {
     steps {
      script {
-      building(60)
+      building.add(60)
      }
     }
    }
