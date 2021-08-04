@@ -1,4 +1,5 @@
 def add(x){
+   script {
    sh '''
       echo "${x}"
       echo '${x}'
@@ -8,4 +9,5 @@ def add(x){
       echo '$x'
       "echo \${x}"
    '''
+   }
 }
