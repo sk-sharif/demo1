@@ -2,12 +2,13 @@
 // project1 {
 // }
 
+@Library('first-shared-lib') _
 node {
   stage("checking stage 1") {
-    echo "checking stage 1 Checked"
+    checking()
   }
   stage("checking stage 2") {
-    echo "checking stage 2 Checked"
+    checking.calling()
   }
 }
 
