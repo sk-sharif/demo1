@@ -1,6 +1,16 @@
-@Library('first-shared-lib') _
-project1 {
+// @Library('first-shared-lib') _
+// project1 {
+// }
+
+node {
+  stage("checking stage 1") {
+    echo "checking stage 1 Checked"
+  }
+  stage("checking stage 2") {
+    echo "checking stage 2 Checked"
+  }
 }
+
 
 
 // pipeline {
