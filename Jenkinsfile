@@ -2,16 +2,21 @@
 // project1 {
 // }
 
+// @Library('first-shared-lib') _
+// node {
+//   stage("checking stage 1") {
+//     checking()
+//   }
+//   stage("checking stage 2") {
+//     checking.calling()
+//   }
+// }
+
 @Library('first-shared-lib') _
 node {
-  stage("checking stage 1") {
-    checking()
-  }
-  stage("checking stage 2") {
-    checking.calling()
-  }
+  checking.calling1()
+  checking.calling2()
 }
-
 
 
 // pipeline {
