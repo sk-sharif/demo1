@@ -1,6 +1,6 @@
-// @Library('first-shared-lib') _
-// project1 {
-// }
+@Library('first-shared-lib') _
+project1 {
+}
 
 // @Library('first-shared-lib') _
 // node {
@@ -12,11 +12,11 @@
 //   }
 // }
 
-@Library('first-shared-lib') _
-node {
-  checking.calling1()
-  checking.calling2()
-}
+// @Library('first-shared-lib') _
+// node {
+//   checking.calling1()
+//   checking.calling2()
+// }
 
 
 // pipeline {
