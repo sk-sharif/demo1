@@ -9,6 +9,9 @@ def call(body) {
   
   stages {
    stage('check') {
+     when {
+      expression{env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'test'}
+     }
     steps {
      script {
       building.add(60)
