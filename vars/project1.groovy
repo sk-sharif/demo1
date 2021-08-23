@@ -12,7 +12,7 @@ def call(body) {
      when {
        expression{env.BRANCH_NAME == 'develop' || env.BRANCH_NAME == 'test'}
      }
-     hideWhenSkipped true
+     hide true
     steps {
      script {
       building.add(60)
