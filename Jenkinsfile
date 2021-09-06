@@ -45,7 +45,7 @@ pipeline {
       steps {
         script {
           restapi();
-          restapi.post();
+         
         }
       }
     }
