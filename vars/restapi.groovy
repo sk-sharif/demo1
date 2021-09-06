@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
   echo "checking 1"
-  def connection = new URL("http://localhost:8012/uuid").openConnection();
+  def connection = new URL("http://localhost:8012/delay/1").openConnection();
   echo "checking 2" 
   connection.setRequestMethod("GET");
   echo "checking 3"
@@ -14,7 +14,7 @@ def call(Map config = [:]) {
 def post(Map config = [:]) {
   // POST
   echo "checking 1"
-  def post = new URL("http://localhost:8012/delay/1").openConnection();
+  def post = new URL("http://localhost:8012/anything").openConnection();
   echo "checking 2"
   def message = '{"message":"this is a message"}'
   echo "checking 3"
