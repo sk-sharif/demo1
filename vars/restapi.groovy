@@ -111,7 +111,7 @@ def updateMachine(Map config = [:]) {
 
 def post(Map config = [:]) {
   // POST
-  def post = new URL("http://localhost:8012/anything/srijal").openConnection();
+  def post = new URL("http://54.36.230.136:2000/api/machine/start/test1").openConnection();
   def message = '{"message":"this is a message"}'
   post.setRequestMethod("POST")
   post.setDoOutput(true)
@@ -120,6 +120,6 @@ def post(Map config = [:]) {
   def postRC = post.getResponseCode();
   println(postRC);
   if(postRC.equals(200)) {
-    println(post.getInputStream().getText());
+    println("Machine is Started.");
   }  
 }
