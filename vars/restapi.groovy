@@ -42,7 +42,7 @@ def createMachine(Map config = [:]) {
 def stopMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test1").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test5").openConnection();
 	  def message = '{"message":"this is a message"}'
     	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
