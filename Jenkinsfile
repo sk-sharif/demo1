@@ -44,8 +44,9 @@ pipeline {
     stage('checking restapi') {
       steps {
         script {
-          restapi();
-         
+          restapi.listsOfMachine();
+          restapi.statusOfMachine();
+          restapi.createMachine();
         }
       }
     }
