@@ -47,9 +47,9 @@ pipeline {
 //           restapi.listsOfMachine();
 //           restapi.statusOfMachine();
 //           restapi.createMachine();
-          restapi.startMachine();
-//           restapi.stopMachine();
+//           restapi.startMachine();
           restapi.updateMachine();
+//           restapi.stopMachine();
         }
       }
     }
