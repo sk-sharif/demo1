@@ -1,5 +1,5 @@
 @Library('first-shared-lib') _
-project1 {
+restapi {
 }
 
 // @Library('first-shared-lib') _
