@@ -43,13 +43,13 @@ pipeline {
   stages {
     stage('checking restapi') {
       steps {
-        script {
-          restapi.listsOfMachine();
-          restapi.statusOfMachine();
-          restapi.createMachine();
+//         script {
+//           restapi.listsOfMachine();
+//           restapi.statusOfMachine();
+//           restapi.createMachine();
           restapi.startMachine();
-          restapi.stopMachine();
-          restapi.updateMachine();
+//           restapi.stopMachine();
+//           restapi.updateMachine();
         }
       }
     }
