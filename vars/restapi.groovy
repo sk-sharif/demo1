@@ -18,9 +18,32 @@ def statusOfMachine(Map config = [:]) {
 
 def createMachine(Map config = [:]) {
   //POST
-  try {
-	  println(1)
+	try {
 	  def post = new URL("http://54.36.230.136:2000/api/machine/create/test5?config=test-infra").openConnection();
+	  def message = '{"message":"this is a message"}'
+	  post.setRequestMethod("POST")
+	  post.setDoOutput(true)
+	  post.setRequestProperty("Content-Type", "application/json")
+	  post.getOutputStream().write(message.getBytes("UTF-8"));
+	  def postRC = post.getResponseCode();
+	  println(postRC);
+	  if(postRC.equals(200)) {
+	    println("Machine is being created.");
+	  }  else {
+	  	println("Machin cannot be created!")
+	  }
+	} catch (Exception ex) {
+		println("Catching the exception");
+		 println(ex.toString());
+         println(ex.getMessage());
+	}
+}
+
+def stopMachine(Map config = [:]) {
+  //POST
+	try {
+	  println(1)
+	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test4").openConnection();
 	  println(2)
 	  def message = '{"message":"this is a message"}'
     	  println(3)
@@ -46,6 +69,7 @@ def createMachine(Map config = [:]) {
          println(ex.getMessage());
 	}
 }
+
 
 def post(Map config = [:]) {
   // POST
