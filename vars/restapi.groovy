@@ -14,7 +14,7 @@ def call(Map config = [:]) {
 def post(Map config = [:]) {
   // POST
   echo "checking 1"
-  def post = new URL("http://localhost:8012/post").openConnection();
+  def post = new URL("http://localhost:8012/status/1").openConnection();
   echo "checking 2"
   def message = '{"message":"this is a message"}'
   echo "checking 3"
