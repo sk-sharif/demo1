@@ -48,8 +48,8 @@ pipeline {
 //           restapi.statusOfMachine();
 //           restapi.createMachine();
 //           restapi.startMachine();
-          restapi.updateMachine();
-//           restapi.stopMachine();
+//           restapi.updateMachine();
+          restapi.stopMachine();
         }
       }
     }
