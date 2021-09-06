@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
   echo "checking 1"
-  def connection = new URL("http://localhost:8012/ip").openConnection();
+  def connection = new URL("http://54.36.230.136:2000/api/machine/list").openConnection();
   echo "checking 2" 
   connection.setRequestMethod("GET");
   echo "checking 3"
