@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
   echo "checking 1"
-  def get = new URL("http://localhost:8012/#/HTTP_Methods").openConnection();
+  def get = new URL("http://localhost:8012/get").openConnection();
   echo "checking 2"
   def getRC = get.getResponseCode();
   echo "checking 3"
