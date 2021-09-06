@@ -44,7 +44,7 @@ pipeline {
     stage('checking restapi') {
       steps {
         script {
-          restapi();
+          restapi.post();
         }
       }
     }
