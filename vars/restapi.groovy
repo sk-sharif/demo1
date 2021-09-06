@@ -20,7 +20,7 @@ def createMachine(Map config = [:]) {
   //POST
   try {
 	  println(1)
-	  def post = new URL("54.36.230.136:2000/api/machine/create/test4?config=test-infra").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/create/test5?config=test-infra").openConnection();
 	  println(2)
 	  def message = '{"message":"this is a message"}'
     	  println(3)
