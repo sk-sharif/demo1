@@ -1,6 +1,6 @@
 def call(Map config = [:]) {
   echo "checking 1"
-  def connection = new URL("http://localhost:8012/user-agent").openConnection();
+  def connection = new URL("http://localhost:8012/image").openConnection();
   echo "checking 2"
 //   def getRC = get.getResponseCode();
 //   echo "checking 3"
