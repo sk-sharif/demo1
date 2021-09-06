@@ -19,21 +19,21 @@ def statusOfMachine(Map config = [:]) {
 def createMachine(Map config = [:]) {
   //POST
   try {
-	  echo "1"
+	  println(1)
 	  def post = new URL("54.36.230.136:2000/api/machine/create/test4?config=test-infra").openConnection();
-	  echo "2"
+	  println(2)
 	  def message = '{"message":"this is a message"}'
-    `	  echo "3"
+    `	  println(3)
 	  post.setRequestMethod("POST")
-	  echo "4"
+	  println(4)
 	  post.setDoOutput(true)
-	  echo "5"
+	  println(5)
 	  post.setRequestProperty("Content-Type", "application/json")
-	  echo "6"
+	  println(6)
 	  post.getOutputStream().write(message.getBytes("UTF-8"));
-	  echo "7"
+	  println(7)
 	  def postRC = post.getResponseCode();
-	  echo "8"
+	  println(8)
 	  println(postRC);
 	  if(postRC.equals(200)) {
 	    println("Machine is being created.");
