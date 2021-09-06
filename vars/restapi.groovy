@@ -39,10 +39,33 @@ def createMachine(Map config = [:]) {
 	}
 }
 
+def startMachine(Map config = [:]) {
+  //POST
+	try {
+	  def post = new URL("http://54.36.230.136:2000/api/machine/start/test1").openConnection();
+	  def message = '{"message":"this is a message"}'
+    	  post.setRequestMethod("POST")
+	  post.setDoOutput(true)
+	  post.setRequestProperty("Content-Type", "application/json")
+	  post.getOutputStream().write(message.getBytes("UTF-8"));
+	  def postRC = post.getResponseCode();
+	  println(postRC);
+	  if(postRC.equals(200)) {
+	    println("Machine is Started.");
+	  }  else {
+	  	println("Machine is cannot be Started!")
+	  }
+	} catch (Exception ex) {
+		println("Catching the exception");
+		 println(ex.toString());
+         println(ex.getMessage());
+	}
+}
+
 def stopMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test5").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test1").openConnection();
 	  def message = '{"message":"this is a message"}'
     	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
@@ -65,7 +88,7 @@ def stopMachine(Map config = [:]) {
 def updateMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/update/test5").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/update/test1").openConnection();
 	  def message = '{"message":"this is a message"}'
     	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
