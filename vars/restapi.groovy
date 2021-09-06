@@ -19,7 +19,7 @@ def statusOfMachine(Map config = [:]) {
 def createMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/create/test6?config=test-infra").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/create/test2?config=test-infra").openConnection();
 	  def message = '{"message":"this is a message"}'
 	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
@@ -42,7 +42,7 @@ def createMachine(Map config = [:]) {
 def startMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/start/test6").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/start/test2").openConnection();
 	  def message = '{"message":"this is a message"}'
     	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
@@ -66,7 +66,7 @@ def startMachine(Map config = [:]) {
 def updateMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/update/test1").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/update/test2").openConnection();
 	  def message = '{"message":"this is a message"}'
     	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
@@ -89,7 +89,7 @@ def updateMachine(Map config = [:]) {
 def stopMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test6").openConnection();
+	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test2").openConnection();
 	  def message = '{"message":"this is a message"}'
     	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
