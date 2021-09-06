@@ -1,6 +1,6 @@
 @Library('first-shared-lib') _
-restapi {
-}
+// restapi {
+// }
 
 // @Library('first-shared-lib') _
 // node {
@@ -37,3 +37,16 @@ restapi {
 //   }
   
 // }
+pipeline {
+  agent any
+  
+  stages {
+    stage('checking restapi') {
+      steps {
+        script {
+          restapi();
+        }
+      }
+    }
+  }
+}
