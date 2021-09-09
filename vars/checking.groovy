@@ -17,3 +17,12 @@ def calling2(Map config = [:]) {
         echo "checking stage 2 Checked"
     }
 }
+
+def getThingList() {
+    return ["thing","thin2","thing3"]
+}
+
+def task(){
+    thing = new getThing()
+    println thing.getThingList()
+}
