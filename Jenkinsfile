@@ -44,7 +44,7 @@ pipeline {
     stage('checking restapi') {
       steps {
         script {
-          for(i=o;i<5;i++){
+          for(i=0;i<5;i++){
             echo "${i}"
           }
         }
