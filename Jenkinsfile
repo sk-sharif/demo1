@@ -37,6 +37,7 @@
 //   }
   
 // }
+def i=1
 pipeline {
   agent any
   
@@ -44,9 +45,15 @@ pipeline {
     stage('checking restapi') {
       steps {
         script {
-          for(i=0;i<5;i++){
-            echo "${i}"
+          
+          if(i == 1) {
+            echo "hlo"
+          } else {
+            echo "hi"
           }
+//           for(i=0;i<5;i++){
+//             echo "${i}"
+//           }
         }
       }
     }
