@@ -2,7 +2,7 @@
 // restapi {
 // }
 
-@Library('first-shared-lib') _
+// @Library('first-shared-lib') _
 // node {
 //   stage("checking stage 1") {
 //     checking()
@@ -12,11 +12,11 @@
 //   }
 // }
 
-@Library('first-shared-lib') _
-node {
-  checking.task()
-//   checking.calling2()
-}
+// @Library('first-shared-lib') _
+// node {
+//   checking.task()
+// //   checking.calling2()
+// }
 
 
 // pipeline {
@@ -37,21 +37,18 @@ node {
 //   }
   
 // }
-// pipeline {
-//   agent any
+pipeline {
+  agent any
   
-//   stages {
-//     stage('checking restapi') {
-//       steps {
-//         script {
-// //           restapi.listsOfMachine();
-// //           restapi.statusOfMachine();
-// //           restapi.createMachine();
-//           restapi.startMachine();
-// //           restapi.updateMachine();
-//           restapi.stopMachine();
-//         }
-//       }
-//     }
-//   }
-// }
+  stages {
+    stage('checking restapi') {
+      steps {
+        script {
+          for(i=o;i<5;i++){
+            echo "${i}"
+          }
+        }
+      }
+    }
+  }
+}
