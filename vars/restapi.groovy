@@ -4,7 +4,8 @@ def listsOfMachine(Map config = [:]) {
   connection.setRequestMethod("GET");
   connection.doOutput = false;
   connection.connect();
-  println(connection.content.text);
+  //println(connection.content.text);
+	return connection.content.text;
 }
 
 def statusOfMachine(Map config = [:]) {
