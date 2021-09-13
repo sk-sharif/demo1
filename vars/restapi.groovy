@@ -1,4 +1,4 @@
-import groovy.json.JsonSlurper;
+import groovy.json.*;
 def listsOfMachine(Map config = [:]) {
   //GET
   def connection = new URL("http://54.36.230.136:2000/api/machine/list").openConnection(); 
@@ -7,7 +7,7 @@ def listsOfMachine(Map config = [:]) {
   connection.connect();
   //println(connection.content.text);
   def arr = connection.content.text;
-  def parser = new JsonSlurper();
+  def parser = new JsonSlurperClassic();
   def json = parser.parseText(arr);
   return json;
 }
