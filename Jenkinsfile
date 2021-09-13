@@ -29,7 +29,7 @@ pipeline {
           if(flag==1) {
             echo "machine alradey exist update the machine"
             restapi.updateMachine(branch_name: "${branch}");
-//             sleep 5;
+            sleep 5;
           } else {
             echo "create the machine"
           }
