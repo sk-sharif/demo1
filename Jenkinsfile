@@ -16,6 +16,7 @@ pipeline {
           def parser = new JsonSlurper()
           def json = parser.parseText(arr)
           echo "${json[0].Name}"
+          echo "${json.size()}"
         }
       }
     }
