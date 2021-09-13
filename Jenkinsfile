@@ -12,7 +12,8 @@ pipeline {
           def count = 0
           arr = restapi.listsOfMachine()
           echo "${arr}"
-          println("class is " + restapi.listOfMachine().getClass())
+          echo "1"
+//           println("class is " + restapi.listOfMachine().getClass())
           
           echo "1"
           echo "${arr.length}"
