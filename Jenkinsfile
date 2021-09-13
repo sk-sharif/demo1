@@ -45,12 +45,20 @@ pipeline {
     stage('checking restapi') {
       steps {
         script {
-          
+          def flag = 0
           def arr = restapi.listsOfMachine()
           for(String target : arr) {
 //             echo "${i}"
 //             echo "${target}"
+            if(target.Name == "harsha") {
+              flag = 1
+            }
             println(target)
+          }
+          if(flag == 0) {
+            echo "machine is not there plz create"
+          } else {
+            echo "machine exists plz update the machine"
           }
           
 //           if(i == 1) {
