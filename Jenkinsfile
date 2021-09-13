@@ -1,7 +1,7 @@
+def branch = "${env.BRANCH_NAME}"
 import groovy.json.JsonSlurper;
 @Library('first-shared-lib') _
 
-def i=1
 pipeline {
   agent any
   
@@ -10,15 +10,15 @@ pipeline {
       steps {
         script {
           def flag = 0
-          def count = 0
+          
           arr = restapi.listsOfMachine()
-          value = arr.getAt(1)
+          
           def parser = new JsonSlurper()
           def json = parser.parseText(arr)
           echo "${json[0].Name}"
           echo "${json.size()}"
           for(i=0;i<json.size();i++) {
-            if(json[i].Name == "sharif") {
+            if(json[i].Name == "${branch}") {
               flag = 1
             }
           }
