@@ -46,7 +46,7 @@ pipeline {
       steps {
         script {
           
-          def arr = ["sharif", "srijal"] as String[]
+          def arr = restapi.listsOfMachine()
           for(i=0;i<arr.length;i++) {
             echo "${i}"
             echo "${arr[i]}"
