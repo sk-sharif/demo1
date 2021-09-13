@@ -1,5 +1,4 @@
 def branch = "${env.BRANCH_NAME}"
-import *;
 import groovy.json.JsonSlurper;
 @Library('first-shared-lib') _
 
