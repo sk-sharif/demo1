@@ -47,7 +47,7 @@ pipeline {
         script {
           
           def arr = restapi.listsOfMachine()
-          for(i=0;i<arr.length;i++) {
+          for(i=0;i<arr.size;i++) {
             echo "${i}"
             echo "${arr[i]}"
           }
