@@ -12,9 +12,9 @@ pipeline {
           def flag = 0
           
           arr = restapi.listsOfMachine()
-          
+          echo '1'
           echo "${arr}";
-          
+          echo '2'
 //           def parser = new JsonSlurper()
 //           def json = parser.parseText(arr)
 //           echo "${json[0].Name}"
