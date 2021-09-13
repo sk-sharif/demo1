@@ -1,42 +1,5 @@
 @Library('first-shared-lib') _
-// restapi {
-// }
 
-// @Library('first-shared-lib') _
-// node {
-//   stage("checking stage 1") {
-//     checking()
-//   }
-//   stage("checking stage 2") {
-//     checking.calling()
-//   }
-// }
-
-// @Library('first-shared-lib') _
-// node {
-//   checking.task()
-// //   checking.calling2()
-// }
-
-
-// pipeline {
-//   agent any 
-  
-//   stages {
-//     stage('checking branch') {
-//       when {
-//         expression{env.BRANCH_NAME == 'main' || env.BRANCH_NAME == 'test'}
-//       }
-      
-//       steps {
-//         script {
-//           echo "${BRANCH_NAME}"
-//         }
-//       }
-//     }
-//   }
-  
-// }
 def i=1
 pipeline {
   agent any
@@ -48,10 +11,12 @@ pipeline {
           def flag = 0
           def count = 0
           arr = restapi.listsOfMachine()
-          echo "${restapi.listsOfMachine().size()}"
+          echo "${restapi.listOfMachine()}"
+          println("class is " + restapi.listOfMachine().getClass())
+          
           echo "1"
           echo "${arr.length}"
-          for(i=0;i<arr.size;i++) {           
+          for(String target : arr) {           
             echo "hi"
 //             echo "${target}"
           }
