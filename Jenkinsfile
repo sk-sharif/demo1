@@ -18,8 +18,8 @@ pipeline {
           echo "1"
           echo "${arr.size()}"
           for(String target : arr) {           
-            echo "hi"
-//             echo "${target}"
+//             echo "hi"
+            echo "${target.Name}"
           }
           if(flag == 0) {
             echo "machine is not there plz create"
