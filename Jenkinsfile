@@ -49,7 +49,7 @@ pipeline {
           def count = 0
           def arr = restapi.listsOfMachine()
           for(String target : arr) {
-            echo "count is + ${count}"
+            echo "${count}"
 //             echo "${i}"
             echo "${target.Name}"
             if(target.Name == "feature") {
