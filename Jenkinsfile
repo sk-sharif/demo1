@@ -26,7 +26,7 @@ pipeline {
           if(flag==1) {
             echo "machine alradey exist update the machine"
             restapi.updateMachine(branch_name: "${branch}");
-            sleep 5;
+            test()
           } else {
             echo "create the machine"
           }
@@ -35,4 +35,11 @@ pipeline {
       }
     }
   }
+}
+
+@NonCPS
+def test() {
+    echo "Start"
+    sleep(5)
+    echo "Stop"
 }
