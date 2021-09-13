@@ -48,16 +48,9 @@ pipeline {
           def flag = 0
           def count = 0
           def arr = restapi.listsOfMachine()
-          for(String target : arr) {
-            echo "${count}"
-//             echo "${i}"
-            echo "${target.Name}"
-            if(target.Name == "feature") {
-              flag = 1
-              echo "there"
-            }
-            
-            println(target)
+          for(String target : arr) {           
+            echo "hi"
+            echo "${target}"
           }
           if(flag == 0) {
             echo "machine is not there plz create"
