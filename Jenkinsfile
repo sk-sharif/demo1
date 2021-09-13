@@ -1,5 +1,5 @@
 def branch = "${env.BRANCH_NAME}"
-import groovy.json.JsonSlurper;
+import groovy.json.JsonSlurperClassic;
 @Library('first-shared-lib') _
 
 pipeline {
@@ -13,7 +13,7 @@ pipeline {
           
           arr = restapi.listsOfMachine()
           
-          def parser = new JsonSlurper()
+          def parser = new JsonSlurperClassic()
           def json = parser.parseText(arr)
           echo "${json[0].Name}"
           echo "${json.size()}"
