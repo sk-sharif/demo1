@@ -49,6 +49,7 @@ pipeline {
           def arr = ["sharif", "srijal"] as String[]
           for(i=0;i<arr.length;i++) {
             echo "${i}"
+            echo "${arr[i]}"
           }
           
 //           if(i == 1) {
