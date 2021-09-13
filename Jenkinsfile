@@ -11,11 +11,10 @@ pipeline {
           def flag = 0
           def count = 0
           arr = restapi.listsOfMachine()
+          value = arr.get(0)
+          echo "${value.getClass()}"
           echo "${arr}"
-          echo "1"
-//           println("class is " + restapi.listOfMachine().getClass())
           
-          echo "1"
           echo "${arr.size()}"
           for(String target : arr) {           
 //             echo "hi"
