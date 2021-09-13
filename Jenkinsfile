@@ -11,7 +11,7 @@ pipeline {
           def flag = 0
           def count = 0
           arr = restapi.listsOfMachine()
-          value = arr.getAt(0)
+          value = arr.getAt(1)
           echo "${value}"
           echo "${value.getClass()}"
           echo "${arr}"
