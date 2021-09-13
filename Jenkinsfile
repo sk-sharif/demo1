@@ -49,7 +49,7 @@ pipeline {
           def count = 0
           def arr = restapi.listsOfMachine()
           echo "1"
-          echo "${arr.size}"
+          echo "${arr.length}"
           for(i=0;i<arr.size;i++) {           
             echo "hi"
 //             echo "${target}"
