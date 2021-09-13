@@ -46,14 +46,17 @@ pipeline {
       steps {
         script {
           def flag = 0
+          def count = 0
           def arr = restapi.listsOfMachine()
           for(String target : arr) {
+            echo "count is + ${count}"
 //             echo "${i}"
             echo "${target.Name}"
             if(target.Name == "feature") {
               flag = 1
               echo "there"
             }
+            
             println(target)
           }
           if(flag == 0) {
