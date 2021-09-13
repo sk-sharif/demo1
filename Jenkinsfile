@@ -38,7 +38,7 @@ pipeline {
   }
 }
 
-@NonCPS
+@CPS
 def test() {
     echo "Start"
     sleep(5)
