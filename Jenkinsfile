@@ -18,7 +18,7 @@ pipeline {
           echo "${json[0].Name}"
           echo "${json.size()}"
           for(i=0;i<json.size();i++) {
-            if(json[i].Name == "feature") {
+            if(json[i].Name == "sharif") {
               flag = 1
             }
           }
