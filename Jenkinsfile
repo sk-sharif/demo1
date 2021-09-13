@@ -49,9 +49,10 @@ pipeline {
           def arr = restapi.listsOfMachine()
           for(String target : arr) {
 //             echo "${i}"
-//             echo "${target}"
+            echo "${target.Name}"
             if(target.Name == "feature") {
               flag = 1
+              echo "there"
             }
             println(target)
           }
