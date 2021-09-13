@@ -16,7 +16,7 @@ pipeline {
 //           println("class is " + restapi.listOfMachine().getClass())
           
           echo "1"
-          echo "${arr.length}"
+          echo "${arr.size}"
           for(String target : arr) {           
             echo "hi"
 //             echo "${target}"
