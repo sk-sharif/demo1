@@ -49,7 +49,8 @@ pipeline {
           def arr = restapi.listsOfMachine()
           for(String target : arr) {
 //             echo "${i}"
-            echo "${target}"
+//             echo "${target}"
+            println(target)
           }
           
 //           if(i == 1) {
