@@ -47,8 +47,10 @@ pipeline {
         script {
           def flag = 0
           def count = 0
-          def arr = restapi.listsOfMachine() as String[]
-          for(String target in arr) {           
+          def arr = restapi.listsOfMachine()
+          echo "1"
+          echo "${arr.size}"
+          for(i=0;i<arr.size;i++) {           
             echo "hi"
 //             echo "${target}"
           }
