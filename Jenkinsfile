@@ -46,11 +46,16 @@ pipeline {
       steps {
         script {
           
-          if(i == 1) {
-            echo "hlo"
-          } else {
-            echo "hi"
+          def arr = ["sharif", "srijal"] as String[]
+          for(i=0;i<arr.length;i++) {
+            echo "${i}"
           }
+          
+//           if(i == 1) {
+//             echo "hlo"
+//           } else {
+//             echo "hi"
+//           }
 //           for(i=0;i<5;i++){
 //             echo "${i}"
 //           }
