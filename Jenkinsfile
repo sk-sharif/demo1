@@ -50,7 +50,7 @@ pipeline {
           for(String target : arr) {
 //             echo "${i}"
 //             echo "${target}"
-            if(target.Name == "harsha") {
+            if(target.Name == "feature") {
               flag = 1
             }
             println(target)
