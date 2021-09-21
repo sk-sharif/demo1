@@ -73,7 +73,7 @@ pipeline {
 //           def date = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
 //           echo "${date}"
           def date = new Date()
-          def sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss")
+          def sdf = new SimpleDateFormat("yyyy-MM-dd")
           println sdf.format(date)
         }
       }
