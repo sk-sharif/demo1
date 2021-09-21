@@ -66,8 +66,8 @@ pipeline {
     stage('date') {
       steps {
         script {
-          def now = new Date()
-          println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+          def now = LocalDateTime.now()
+          println now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmm"))
         }
       }
     }
