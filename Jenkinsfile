@@ -59,19 +59,39 @@
 //   }
 // }
 
-import java.time.*
-import java.time.format.DateTimeFormatter
-pipeline {
-  agent any
+// import java.time.*
+// import java.time.format.DateTimeFormatter
+// pipeline {
+//   agent any
   
+//   stages {
+//     stage('date') {
+//       steps {
+//         script {
+//           def now = LocalDateTime.now()
+//           def date = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+//           echo "${date}"
+//         }
+//       }
+//     }
+//   }
+// }
+
+pipeline {
+  agent any 
+  environment {
+    currentDate = sh(returnStdout: true, script: 'date +%Y-%m-%d').trim()
+  }
   stages {
     stage('date') {
       steps {
         script {
-          def now = LocalDateTime.now()
-          def date = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-          echo "${date}"
+          parameters: [
+            [$class: 'StringParameterValue', name: 'ReleaseDate', value: "${currentDate}"]
+          ]
+          echo "${ReleaseDate}"
         }
+        
       }
     }
   }
