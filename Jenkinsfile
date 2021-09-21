@@ -69,7 +69,8 @@ pipeline {
       steps {
         script {
           def now = LocalDateTime.now()
-          println now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+          def date = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+          echo "${date}"
         }
       }
     }
