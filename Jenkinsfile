@@ -85,13 +85,12 @@ pipeline {
   stages {
     stage('date') {
       steps {
+        parameters: [
+          [$class: 'StringParameterValue', name: 'ReleaseDate', value: "${currentDate}"]
+        ]
         script {
-          parameters: [
-            [$class: 'StringParameterValue', name: 'ReleaseDate', value: "${currentDate}"]
-          ]
           echo "${ReleaseDate}"
-        }
-        
+        } 
       }
     }
   }
