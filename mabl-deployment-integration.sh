@@ -4,7 +4,7 @@ MABL_API_BASE="https://api.mabl.com"
 POLL_SEC=10
 
 if [ "$#" -ne 2 ]; then
-  echo "Usage: $0 Ax64oPQAvGPZXGI8IXavHQ-a aoH53z2XGs6hVaURhlnOyw-e"
+  echo "Usage: $0 <Ax64oPQAvGPZXGI8IXavHQ-a> <aoH53z2XGs6hVaURhlnOyw-e>"
   exit 0
 fi
 
