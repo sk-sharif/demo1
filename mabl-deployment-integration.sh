@@ -8,8 +8,8 @@ if [ "$#" -ne 2 ]; then
   exit 0
 fi
 
-API_KEY="Ax64oPQAvGPZXGI8IXavHQ-a"
-ENV_ID="aoH53z2XGs6hVaURhlnOyw-e"
+API_KEY="$1"
+ENV_ID="$2"
 
 # Create a deployment event, and retrieve its ID:
 deployment_event=$(curl -s "${MABL_API_BASE}/events/deployment" -u "key:${API_KEY}" -H 'Content-Type:application/json' -d "{\"environment_id\":\"${ENV_ID}\"}")
