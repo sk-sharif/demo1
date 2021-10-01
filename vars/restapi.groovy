@@ -1,15 +1,23 @@
 import groovy.json.*;
 def listsOfMachine(Map config = [:]) {
-  //GET
-  def connection = new URL("http://54.36.230.136:2000/api/machine/list").openConnection(); 
-  connection.setRequestMethod("GET");
-  connection.doOutput = false;
-  connection.connect();
-  //println(connection.content.text);
-  def arr = connection.content.text;
-  def parser = new JsonSlurperClassic();
-  def json = parser.parseText(arr);
-  return json;
+    def http = new HTTPBuilder( 'http://ajax.googleapis.com' )
+
+// perform a GET request, expecting JSON response data
+http.request( GET, JSON ) {
+  uri.path = '/ajax/services/search/web'
+  uri.query = [ v:'1.0', q: 'Calvin and Hobbes' ]
+
+  headers.'User-Agent' = 'Mozilla/5.0 Ubuntu/8.10 Firefox/3.0.4'
+
+  // response handler for a success response code:
+  response.success = { resp, json ->
+    println resp.statusLine
+
+    // parse the JSON response object:
+    json.responseData.results.each {
+      println "  ${it.titleNoFormatting} : ${it.visibleUrl}"
+    }
+  }
 }
 
 def statusOfMachine(Map config = [:]) {
