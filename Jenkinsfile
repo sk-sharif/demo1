@@ -7,7 +7,7 @@ pipeline {
       steps {
         script {
           echo "hi"
-          checking.calling()
+          global.calling()
         }
       }
     }
