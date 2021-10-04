@@ -7,7 +7,8 @@ pipeline {
       steps {
         script {
           echo "hi"
-          echo "${BUILD_URL}/consoleText"
+          def var = "${BUILD_URL}/consoleText"
+          echo "${var}"
         }
       }
     }
