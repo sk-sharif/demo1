@@ -1,4 +1,4 @@
-@Library('first-shared-lib') _
+// @Library('first-shared-lib') _
 pipeline {
   agent any 
   
@@ -7,7 +7,7 @@ pipeline {
       steps {
         script {
           echo "hi"
-          checking.calling()
+          echo "${BUILD_URL}"
         }
       }
     }
