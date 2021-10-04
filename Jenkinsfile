@@ -7,7 +7,7 @@ pipeline {
       steps {
         script {
           echo "hi"
-          echo "${BUILD_URL}"
+          echo "${BUILD_URL}/consoleText"
         }
       }
     }
