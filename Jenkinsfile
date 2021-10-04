@@ -7,7 +7,7 @@ pipeline {
       steps {
         script {
           echo "hi"
-          echo "${BUILD_STATUS}"
+          echo "${currentBuild.currentResult}"
         }
       }
     }
