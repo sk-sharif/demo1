@@ -7,7 +7,7 @@ pipeline {
       steps {
         script {
           echo "hi"
-          sh echo "curl -s -S  -u sharif:9616 ${BUILD_URL}/consoleText"
+          sh def var = "curl -s -S  -u sharif:9616 ${BUILD_URL}/consoleText"
 //           echo "${var}"
         }
       }
