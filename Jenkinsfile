@@ -18,7 +18,7 @@ pipeline {
           echo var
           def lines = var.split( '\n' )
           num = lines.size()
-          def line = lines.toString()replaceAll('\\\n',' ')
+          def line = lines.toString().replaceAll('\\\n',' ')
           echo "checked1"
           echo lines[0]
           echo "${num}"
