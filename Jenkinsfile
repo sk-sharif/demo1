@@ -15,7 +15,7 @@ pipeline {
           sh """#!/bin/bash
             var = mabl environments list | grep youtube | awk '''{print \$2}' 
             echo "checked"
-            echo "${var}"
+            echo "\$var"
           """
         }
       }
