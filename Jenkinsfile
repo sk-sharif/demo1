@@ -13,11 +13,22 @@ pipeline {
 //           mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'XOJFKAPszBS7Kx0yKZ5P4Q-a', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
 //           sh "mabl applications list"
           
-          def str1='My application version is $app_version'
-          def str2 = str1.replaceAll('\\$app_version','2016072601')
-          echo "${str2}"
-//           def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
-//           echo "checked"
+//           def str1='My application version is $app_version'
+//           def str2 = str1.replaceAll('\\$app_version','2016072601')
+//           echo "${str2}"
+          def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
+          echo "checked"
+          def lines = var.split( '\n' )
+          def count = 0
+          for(i=0;i<lines.size();i++) {
+            if(lines[i] == " ") {
+              echo "empty"
+            } else {
+              count++
+            }
+          }
+          echo "${count}"
+          
 //           echo var
 //           def lines = var.split( '\n' )
 //           num = lines.size()
