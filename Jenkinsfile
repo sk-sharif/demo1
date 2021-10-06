@@ -16,7 +16,8 @@ pipeline {
           def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
           echo "checked"
           echo var
-          echo var.size()
+          def num = var.size()
+          echo "${num}"
 //           for(i=0;i<var.size();i++) {
           
 //           }
