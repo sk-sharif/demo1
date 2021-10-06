@@ -1,5 +1,5 @@
 // @Library('first-shared-lib') _
-// def var;
+def branch = "youtube"
 pipeline {
   agent any 
   
@@ -13,7 +13,7 @@ pipeline {
 //           mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'XOJFKAPszBS7Kx0yKZ5P4Q-a', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
 //           sh "mabl applications list"
           
-          def var = sh(script: """mabl environments list | grep youtube | awk '''{print \$2}' """, returnStdout: true).trim()
+          def var = sh(script: """mabl environments list | grep ${branch} | awk '''{print \$2}' """, returnStdout: true).trim()
           echo "checked"
           echo var
         }
