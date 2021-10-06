@@ -21,7 +21,7 @@ pipeline {
           def lines = var.split( '\n' )
           def count = 0
           for(i=0;i<lines.size();i++) {
-            if(lines[i] == "\n") {
+            if(lines[i] == '\n') {
               echo "empty"
             } else {
               count++
