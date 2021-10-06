@@ -13,7 +13,7 @@ pipeline {
 //           mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'XOJFKAPszBS7Kx0yKZ5P4Q-a', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
 //           sh "mabl applications list"
           
-          List var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
+          var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
           echo "checked"
           echo var[0]
 //           List lines = var.split( '\n' ).trim()
