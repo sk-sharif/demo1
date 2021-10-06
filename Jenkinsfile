@@ -18,6 +18,10 @@ pipeline {
           echo var
           def num = var[4]
           echo "${num}"
+          def num1 = var[5]
+          echo "${num1}"
+          def num2 = var[6]
+          echo "${num2}"
 //           for(i=0;i<var.size();i++) {
           
 //           }
