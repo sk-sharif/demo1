@@ -16,13 +16,15 @@ pipeline {
           var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
           echo "checked"
           echo var
-          lines = var.split( '\n' ) | tr -d '\n'
+          lines = var.split( '\n' )
           num = lines.size()
-//           String lines = lines.replaceAll(~/\n/, "#")
+          def line = lines.replaceAll('\\)',' ')
           echo "checked1"
           echo lines[0]
           echo "${num}"
-
+          
+          num1 = line.size()
+          echo "${num1}"
 //           for(i=0;i<var.size();i++) {
           
 //           }
