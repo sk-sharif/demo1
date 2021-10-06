@@ -18,13 +18,8 @@ pipeline {
           echo var
           List lines = var.split( '\n' ).findAll { !it.startsWith( ',' ) }
           echo "checked1"
-          echo lines[0]
-//           def num = var[4]
-//           echo "${num}"
-//           def num1 = var[5]
-//           echo "${num1}"
-//           def num2 = var[6]
-//           echo "${num2}"
+          echo lines[1]
+
 //           for(i=0;i<var.size();i++) {
           
 //           }
