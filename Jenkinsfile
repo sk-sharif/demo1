@@ -29,6 +29,8 @@ pipeline {
           }
           echo "${count}"
           
+          echo "${lines}"
+          
 //           echo var
 //           def lines = var.split( '\n' )
 //           num = lines.size()
