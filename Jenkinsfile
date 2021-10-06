@@ -17,9 +17,9 @@ pipeline {
           echo "checked"
           echo var
           List lines = var.split( '\n' ).findAll { !it.startsWith( ',' ) }
-          String line = lines.replaceAll(~/\n/, "#")
+          lines = lines.replaceAll(~/\n/, "#")
           echo "checked1"
-          echo line
+          echo lines[0]
 
 //           for(i=0;i<var.size();i++) {
           
