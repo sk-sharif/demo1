@@ -22,9 +22,7 @@ pipeline {
           def count = 0
           def values = []
           for(i=0;i<lines.size();i++) {
-            if(lines[i] == '') {
-              echo "empty"
-            } else {
+            if(lines[i] != '') {
               values << lines[i]
               count++
             }
@@ -38,19 +36,6 @@ pipeline {
           echo "${num}"
           
           echo "${values}"
-//           echo var
-//           def lines = var.split( '\n' )
-//           num = lines.size()
-//           def line = lines.replaceAll('\\\n',' ')
-//           echo "checked1"
-//           echo lines[0]
-//           echo "${num}"
-          
-//           num1 = line.size()
-//           echo "${num1}"
-//           for(i=0;i<var.size();i++) {
-          
-//           }
         }
       }
     }  
