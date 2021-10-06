@@ -16,7 +16,7 @@ pipeline {
           var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
           echo "checked"
           echo var
-          List lines = var.split( '\n' )
+          lines = var.split( '\n' )
 //           lines = lines.replaceAll(~/\n/, "#")
           echo "checked1"
           echo lines[0]
