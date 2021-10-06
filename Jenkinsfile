@@ -6,7 +6,7 @@ pipeline {
     stage('mabl test') {
       steps {
         script {
-          mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'RL3pjypTsSB6dmRCKcHOwA-a', environmentId: 'NYU503tojgNv1E89EEsBzw-e', labels: 'mabl-jenkins', mablBranch: '', restApiKeyId: 'mabl-rest-api'
+          mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'RL3pjypTsSB6dmRCKcHOwA-a', environmentId: 'NYU503tojgNv1E89EEsBzw-e', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
         }
       }
     }  
