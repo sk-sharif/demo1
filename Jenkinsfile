@@ -11,9 +11,11 @@ pipeline {
 //           sh "mabl environments create --name E0-link-agent-3 --application-id XOJFKAPszBS7Kx0yKZ5P4Q-a --app-url https://www.youtube.com/ --link link-agent --preview true"
 //           mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'XOJFKAPszBS7Kx0yKZ5P4Q-a', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
 //           sh "mabl applications list"
-          sh """mabl environments list | grep youtube | awk '''{print \$2}' """
-          echo "checked"
-//           echo "${var}"
+          sh """
+            var = mabl environments list | grep youtube | awk '''{print \$2}' 
+            echo "checked"
+            echo "${var}"
+          """
         }
       }
     }  
