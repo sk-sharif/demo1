@@ -13,18 +13,21 @@ pipeline {
 //           mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'XOJFKAPszBS7Kx0yKZ5P4Q-a', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
 //           sh "mabl applications list"
           
-          def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
-          echo "checked"
-          echo var
-          def lines = var.split( '\n' )
-          num = lines.size()
-          def line = lines.toString().replaceAll('\\\n',' ')
-          echo "checked1"
-          echo lines[0]
-          echo "${num}"
+          def str1='My application version is $app_version'
+          def str2 = str1.replaceAll('\\$app_version','2016072601')
+          echo "${str2}"
+//           def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
+//           echo "checked"
+//           echo var
+//           def lines = var.split( '\n' )
+//           num = lines.size()
+//           def line = lines.replaceAll('\\\n',' ')
+//           echo "checked1"
+//           echo lines[0]
+//           echo "${num}"
           
-          num1 = line.size()
-          echo "${num1}"
+//           num1 = line.size()
+//           echo "${num1}"
 //           for(i=0;i<var.size();i++) {
           
 //           }
