@@ -13,15 +13,15 @@ pipeline {
 //           mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'XOJFKAPszBS7Kx0yKZ5P4Q-a', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
 //           sh "mabl applications list"
           
-          def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
+          def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true)
           echo "checked"
           echo var
-          def num = var[4]
-          echo "${num}"
-          def num1 = var[5]
-          echo "${num1}"
-          def num2 = var[6]
-          echo "${num2}"
+//           def num = var[4]
+//           echo "${num}"
+//           def num1 = var[5]
+//           echo "${num1}"
+//           def num2 = var[6]
+//           echo "${num2}"
 //           for(i=0;i<var.size();i++) {
           
 //           }
