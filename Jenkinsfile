@@ -14,7 +14,7 @@ pipeline {
 //           sh "mabl applications list"
           
           def var = sh(script: """mabl environments list | grep youtube | awk '''{print \$2}' """ )
-          echo "var"
+          echo var
         }
       }
     }  
