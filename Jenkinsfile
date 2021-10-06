@@ -1,4 +1,5 @@
 // @Library('first-shared-lib') _
+def var;
 pipeline {
   agent any 
   
