@@ -1,5 +1,6 @@
 // @Library('first-shared-lib') _
-def branch = "youtube"
+def branchs = "youtube"
+def branch = "${env.BRANCH_NAME}"
 pipeline {
   agent any 
   
@@ -11,11 +12,7 @@ pipeline {
 //           sh "mabl auth activate-key zbPJbQX32ZUrlLinkZyUBQ"
 //           sh "mabl environments create --name E0-link-agent-3 --application-id XOJFKAPszBS7Kx0yKZ5P4Q-a --app-url https://www.youtube.com/ --link link-agent --preview true"
 //           mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: 'XOJFKAPszBS7Kx0yKZ5P4Q-a', labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
-//           sh "mabl applications list"
-          
-//           def str1='My application version is $app_version'
-//           def str2 = str1.replaceAll('\\$app_version','2016072601')
-//           echo "${str2}"
+
           def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
           echo "checked"
           def lines = var.split( '\n' ).findAll { !it.startsWith( ',' ) }
@@ -27,15 +24,15 @@ pipeline {
               count++
             }
           }
-          echo "${count}"
           
-          echo "${lines}"
+          for(i=0;i<values.size();i++) {
+            if(values[i] == "${branch}") {
+              // check the env is there in mabl if is there run the test using line 14
+            } else {
+              // create the env using 13 line and run the test using  line 14
+            }
+          }
           
-          num = values.size()
-          
-          echo "${num}"
-          
-          echo "${values}"
         }
       }
     }  
