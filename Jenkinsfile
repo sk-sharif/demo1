@@ -18,7 +18,7 @@ pipeline {
 //           echo "${str2}"
           def var = sh(script: """mabl environments list | awk '''{print \$4}' """, returnStdout: true).trim()
           echo "checked"
-          def lines = var.split( '\n' )
+          def lines = var.split( '\n' ).findAll { !it.startsWith( ',' ) }
           def count = 0
           for(i=0;i<lines.size();i++) {
             if(lines[i] == '') {
