@@ -33,7 +33,9 @@ pipeline {
           
           echo "${lines}"
           
-          echo "${values}"
+          num = values.size()
+          
+          echo "${num}"
 //           echo var
 //           def lines = var.split( '\n' )
 //           num = lines.size()
