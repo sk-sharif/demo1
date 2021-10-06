@@ -20,7 +20,7 @@ pipeline {
           echo "checked"
           def lines = var.split( '\n' ).findAll { !it.startsWith( ',' ) }
           def count = 0
-          def values
+          def values = []
           for(i=0;i<lines.size();i++) {
             if(lines[i] == '') {
               echo "empty"
