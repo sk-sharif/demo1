@@ -6,11 +6,11 @@ pipeline {
     stage('mabl test') {
       steps {
         script {
-          echo "hi"
-          echo "${var}"
-          echo "${currentBuild.currentResult}"
+          withCredentials([usernamePassword(credentialsId: 'mablid', passwordVariable: 'mablenvid', usernameVariable: 'mablappid')]) {
+            mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: "${mablappid}", continueOnMablError: true, continueOnPlanFailure: true, environmentId: "${mablenvid}", labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
+          }
         }
       }
-    }
+    }  
   }
 }
