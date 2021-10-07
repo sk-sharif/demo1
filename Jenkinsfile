@@ -32,6 +32,7 @@ pipeline {
           for(i=0;i<values.size();i++) { 
             if(values[i] == "${branch}") {
               flag = 1
+            }
           }
           
           if(flag == 1) {
