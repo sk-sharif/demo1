@@ -26,23 +26,31 @@ pipeline {
           }
           
           for(i=0;i<values.size();i++) {
+            
             if(values[i] == "${branch}") {
-              // check the env is there in mabl if is there run the test using line 14
-              def envId = sh(script: """mabl environments list | grep "${branch}" | awk '''{print \$2}' """, returnStdout: true).trim()
-              echo "${envId}"
-              if("${envId}" != '') {
-                mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: "XOJFKAPszBS7Kx0yKZ5P4Q-a", environmentId: "${envId}", labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
-              }
+              check = value[i]
+              echo "${check}"
+              echo "matched"
             } else {
-              // create the env using 13 line and run the test using  line 14
-              sh "mabl auth activate-key zbPJbQX32ZUrlLinkZyUBQ"
-              sh "mabl environments create --name ${branch} --application-id XOJFKAPszBS7Kx0yKZ5P4Q-a --app-url https://www.youtube.com/ --link link-agent --preview true"
-              def envId = sh(script: """mabl environments list | grep "${branch}" | awk '''{print \$2}' """, returnStdout: true).trim()
-              echo "${envId}"
-              if("${envId}" != '') {
-                mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: "XOJFKAPszBS7Kx0yKZ5P4Q-a", environmentId: "${envId}", labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
-              }
+              echo "not matched"
             }
+//             if(values[i] == "${branch}") {
+//               // check the env is there in mabl if is there run the test using line 14
+//               def envId = sh(script: """mabl environments list | grep "${branch}" | awk '''{print \$2}' """, returnStdout: true).trim()
+//               echo "${envId}"
+//               if("${envId}" != '') {
+//                 mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: "XOJFKAPszBS7Kx0yKZ5P4Q-a", environmentId: "${envId}", labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
+//               }
+//             } else {
+//               // create the env using 13 line and run the test using  line 14
+//               sh "mabl auth activate-key zbPJbQX32ZUrlLinkZyUBQ"
+//               sh "mabl environments create --name ${branch} --application-id XOJFKAPszBS7Kx0yKZ5P4Q-a --app-url https://www.youtube.com/ --link link-agent --preview true"
+//               def envId = sh(script: """mabl environments list | grep "${branch}" | awk '''{print \$2}' """, returnStdout: true).trim()
+//               echo "${envId}"
+//               if("${envId}" != '') {
+//                 mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: "XOJFKAPszBS7Kx0yKZ5P4Q-a", environmentId: "${envId}", labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
+//               }
+//             }
           }
           
         }
