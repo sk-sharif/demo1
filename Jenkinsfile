@@ -33,11 +33,9 @@ pipeline {
             echo "env already exist test the app url"
             def envId = sh(script: """mabl environments list | grep "${branch}" | awk '''{print \$2}' """, returnStdout: true).trim()
             echo "${envId}"
-            if("${envId}" == '')
+            if("${envId}" != '')
             {
               mabl apiBaseUrl: 'https://api.mabl.com', appBaseUrl: 'https://app.mabl.com', applicationId: "XOJFKAPszBS7Kx0yKZ5P4Q-a", environmentId: "${envId}", labels: '', mablBranch: '', restApiKeyId: 'mabl-rest-api'
-            } else {
-              echo "env is not null"
             }
           } else {
             echo "create the env and test the  url"
