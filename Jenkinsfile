@@ -25,8 +25,9 @@ pipeline {
             }
           }
           
-          for(i=0;i<values.size();i++) {
-            
+          echo "${values}"
+          
+          for(i=0;i<values.size();i++) { 
             if(values[i] == "${branch}") {
 //               echo value[i]
               
