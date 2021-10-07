@@ -28,7 +28,7 @@ pipeline {
           for(i=0;i<values.size();i++) {
             
             if(values[i] == "${branch}") {
-              echo value[i]
+//               echo value[i]
               
               echo "matched"
             } else {
