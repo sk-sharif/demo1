@@ -1,4 +1,4 @@
-/def branch = "${env.BRANCH_NAME}"
+def branch = "${env.BRANCH_NAME}"
 @Library('first-shared-lib') _
 pipeline {
   agent any
@@ -6,28 +6,30 @@ pipeline {
     stage('invoking the orchestration api') {
       steps {
         script {
-          shared.invokingApi(branch: "${branch}")
+//           shared.invokingApi(branch: "${branch}")
+          echo "stage 1"
         }
       }
     }
     stage('Triggring integration test') {
       steps {
         script {
-          shared.integrationTest(branch: "${branch}")
+//           shared.integrationTest(branch: "${branch}")
+          echo "stage 2"
         }
       }
     } 
   }
-  post {
-    success {
-      script {
-        db.logging(branch_name: "${branch}",action: "Environment ${branch} was provisioned")
-      }
-    }
-    failure {
-      script {
-        db.logging(branch_name: "${branch}",action: "Environment ${branch} failed to provisioned")
-      }
-    }
-  }
+//   post {
+//     success {
+//       script {
+//         db.logging(branch_name: "${branch}",action: "Environment ${branch} was provisioned")
+//       }
+//     }
+//     failure {
+//       script {
+//         db.logging(branch_name: "${branch}",action: "Environment ${branch} failed to provisioned")
+//       }
+//     }
+//   }
 }
