@@ -1,38 +1,48 @@
+@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.5.0-RC2' )
 import groovy.json.*;
+import groovyx.net.http.*
+import static groovyx.net.http.ContentType.*
+import static groovyx.net.http.Method.*
+import groovyx.net.http.HTTPBuilder
+
 def listsOfMachine(Map config = [:]) {
-    def http = new HTTPBuilder( 'http://ajax.googleapis.com' )
-
-// perform a GET request, expecting JSON response data
-http.request( GET, JSON ) {
-  uri.path = '/ajax/services/search/web'
-  uri.query = [ v:'1.0', q: 'Calvin and Hobbes' ]
-
-  headers.'User-Agent' = 'Mozilla/5.0 Ubuntu/8.10 Firefox/3.0.4'
-
-  // response handler for a success response code:
-  response.success = { resp, json ->
-    println resp.statusLine
-
-    // parse the JSON response object:
-    json.responseData.results.each {
-      println "  ${it.titleNoFormatting} : ${it.visibleUrl}"
-    }
-  }
+  //GET
+  def connection = new URL("https://test.imqs.co.za:2000/api/machine/list").openConnection(); 
+  connection.setRequestProperty("Authorization", "Basic ${config.auth}");
+  connection.setRequestMethod("GET");
+  connection.doOutput = false;
+  connection.connect();
+  def arr = connection.content.text;
+  println(arr);
+  def parser = new JsonSlurperClassic();
+  def json = parser.parseText(arr);
+  return json;
 }
 
 def statusOfMachine(Map config = [:]) {
   // GET
-  def connection = new URL("http://54.36.230.136:2000/api/machine/status/test1").openConnection(); 
-  connection.setRequestMethod("GET");
-  connection.doOutput = false;
-  connection.connect();
-  println(connection.content.text);
+	try {
+  		def connection = new URL("https://test.imqs.co.za:2000/api/machine/status/${config.branch_name}").openConnection(); 
+		connection.setRequestProperty("Authorization", "Basic ${config.auth}");
+  		connection.setRequestMethod("GET");
+  		connection.doOutput = false;
+  		connection.connect();
+  		println(connection.content.text);
+		return connection.content.text;
+		
+	} catch (Exception ex) {
+		println("Catching the exception");
+		println(ex.toString());
+        	println(ex.getMessage());
+	}
 }
 
 def createMachine(Map config = [:]) {
   //POST
+	echo "${config.branch_name}"
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/create/test2?config=test-infra").openConnection();
+	  def post = new URL("https://test.imqs.co.za:2000/api/machine/create/${config.branch_name}?config=test-infra").openConnection();
+	  post.setRequestProperty("Authorization", "Basic ${config.auth}");
 	  def message = '{"message":"this is a message"}'
 	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
@@ -40,6 +50,7 @@ def createMachine(Map config = [:]) {
 	  post.getOutputStream().write(message.getBytes("UTF-8"));
 	  def postRC = post.getResponseCode();
 	  println(postRC);
+	  return postRC; 
 	  if(postRC.equals(200)) {
 	    println("Machine is being created.");
 	  }  else {
@@ -54,15 +65,18 @@ def createMachine(Map config = [:]) {
 
 def startMachine(Map config = [:]) {
   //POST
+	echo "${config.branch_name}"
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/start/test2").openConnection();
+	  def post = new URL("https://test.imqs.co.za:2000/api/machine/start/${config.branch_name}").openConnection();
+	  post.setRequestProperty("Authorization", "Basic ${config.auth}");
 	  def message = '{"message":"this is a message"}'
     	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
 	  post.setRequestProperty("Content-Type", "application/json")
 	  post.getOutputStream().write(message.getBytes("UTF-8"));
 	  def postRC = post.getResponseCode();
-	  println(postRC);
+// 	  println(postRC);
+          return postRC;
 	  if(postRC.equals(200)) {
 	    println("Machine is Started.");
 	  }  else {
@@ -75,41 +89,19 @@ def startMachine(Map config = [:]) {
 	}
 }
 
-
-def updateMachine(Map config = [:]) {
-  //POST
-	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/update/test2").openConnection();
-	  def message = '{"message":"this is a message"}'
-    	  post.setRequestMethod("POST")
-	  post.setDoOutput(true)
-	  post.setRequestProperty("Content-Type", "application/json")
-	  post.getOutputStream().write(message.getBytes("UTF-8"));
-	  def postRC = post.getResponseCode();
-	  println(postRC);
-	  if(postRC.equals(200)) {
-	    println("Machine is Updated.");
-	  }  else {
-	  	println("Machine is cannot Updated!")
-	  }
-	} catch (Exception ex) {
-		println("Catching the exception");
-		 println(ex.toString());
-         println(ex.getMessage());
-	}
-}
-
 def stopMachine(Map config = [:]) {
   //POST
 	try {
-	  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test2").openConnection();
+	  def post = new URL("https://test.imqs.co.za:2000/api/machine/stop/${config.branch_name}").openConnection();
+	  post.setRequestProperty("Authorization", "Basic ${config.auth}");
 	  def message = '{"message":"this is a message"}'
-    	  post.setRequestMethod("POST")
+	  post.setRequestMethod("POST")
 	  post.setDoOutput(true)
 	  post.setRequestProperty("Content-Type", "application/json")
 	  post.getOutputStream().write(message.getBytes("UTF-8"));
 	  def postRC = post.getResponseCode();
 	  println(postRC);
+          return postRC;
 	  if(postRC.equals(200)) {
 	    println("Machine is Stopped.");
 	  }  else {
@@ -122,17 +114,27 @@ def stopMachine(Map config = [:]) {
 	}
 }
 
-def post(Map config = [:]) {
-  // POST
-  def post = new URL("http://54.36.230.136:2000/api/machine/stop/test1").openConnection();
-  def message = '{"message":"this is a message"}'
-  post.setRequestMethod("POST")
-  post.setDoOutput(true)
-  post.setRequestProperty("Content-Type", "application/json")
-  post.getOutputStream().write(message.getBytes("UTF-8"));
-  def postRC = post.getResponseCode();
-  println(postRC);
-  if(postRC.equals(200)) {
-    println("Machine is Stopped.");
-  }  
+def updateMachine(Map config = [:]) {
+  //POST
+	try {
+	  def post = new URL("https://test.imqs.co.za:2000/api/machine/update/${config.branch_name}").openConnection();
+	  post.setRequestProperty("Authorization", "Basic ${config.auth}");
+	  def message = '{"message":"this is a message"}'
+    	  post.setRequestMethod("POST")
+	  post.setDoOutput(true)
+	  post.setRequestProperty("Content-Type", "application/json")
+	  post.getOutputStream().write(message.getBytes("UTF-8"));
+	  def postRC = post.getResponseCode();
+	  println(postRC);
+       	  return postRC;
+	  if(postRC.equals(200)) {
+	    println("Machine is Updated.");
+	  }  else {
+	  	println("Machine is cannot Updated!")
+	  }
+	} catch (Exception ex) {
+		println("Catching the exception");
+		 println(ex.toString());
+         println(ex.getMessage());
+	}
 }
