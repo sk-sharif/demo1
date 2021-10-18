@@ -43,6 +43,7 @@
 
 node {
   wrap([$class: 'BuildUser']) {
+    echo "sharif"
     echo "${env.BUILD_USER}"
     echo "${env.BUILD_USER_ID}"
     echo "${env.BUILD_USER_EMAIL}"
