@@ -41,33 +41,37 @@
 // }
 
 
-node {
-  wrap([$class: 'BuildUser']) {
-    echo "${env.BUILD_USER}"
-    echo "${env.BUILD_USER_ID}"
-    echo "${env.BUILD_USER_EMAIL}"
-    echo "${env.BUILD_USER_GROUPS}"
-  }
-}
+// node {
+//   wrap([$class: 'BuildUser']) {
+//     echo "${env.BUILD_USER}"
+//     echo "${env.BUILD_USER_ID}"
+//     echo "${env.BUILD_USER_EMAIL}"
+//     echo "${env.BUILD_USER_GROUPS}"
+//   }
+// }
 
 
-// pipeline {
-//     agent any
-//     options {
-//         timestamps()
-//     }
-//     stages {
-//         stage('Test Stage') {
-//             steps {
-//                 script {
-// //                     echo "${env.BUILD_URL}/console"
-// //                     echo "${env.BUILD_NUMBER}"
+pipeline {
+    agent any
+    options {
+        timestamps()
+    }
+    stages {
+        stage('Test Stage') {
+            steps {
+                script {
+//                     echo "${env.BUILD_URL}/console"
+//                     echo "${env.BUILD_NUMBER}"
 //                     BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
 //                     echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
-//                 }
-//             }
-//         }
-//     }
-// }
+                  BUILD_CAUSE_JSON=$(curl --silent ${BUILD_URL}/api/json | tr "{}" "\n" | grep "Started by")
+                  BUILD_USER_ID=$(echo $BUILD_CAUSE_JSON | tr "," "\n" | grep "userId" | awk -F\" '{print $4}')
+                  BUILD_USER_NAME=$(echo $BUILD_CAUSE_JSON | tr "," "\n" | grep "userName" | awk -F\" '{print $4}')
+                                    echo "${BUILD_USER_NAME}"
+                }
+            }
+        }
+    }
+}
 
 
