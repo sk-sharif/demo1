@@ -1,5 +1,5 @@
-def branch = "${env.BRANCH_NAME}"
-@Library('first-shared-lib') _
+// def branch = "${env.BRANCH_NAME}"
+// @Library('first-shared-lib') _
 pipeline {
   agent any
   stages {
@@ -8,17 +8,19 @@ pipeline {
         script {
 //           shared.invokingApi(branch: "${branch}")
           echo "stage 1"
+          def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause) != null
+          echo "${isStartedByUser}"
         }
       }
     }
-    stage('Triggring integration test') {
-      steps {
-        script {
-//           shared.integrationTest(branch: "${branch}")
-          echo "stage 2"
-        }
-      }
-    } 
+//     stage('Triggring integration test') {
+//       steps {
+//         script {
+// //           shared.integrationTest(branch: "${branch}")
+//           echo "stage 2"
+//         }
+//       }
+//     } 
   }
 //   post {
 //     success {
