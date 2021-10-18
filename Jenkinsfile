@@ -8,8 +8,8 @@ pipeline {
         script {
 //           shared.invokingApi(branch: "${branch}")
           echo "stage 1"
-//           def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause) != null
-//           echo "${isStartedByUser}"
+          def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause) != null
+          echo "${isStartedByUser}"
         }
       }
     }
