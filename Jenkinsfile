@@ -91,11 +91,10 @@ pipeline {
             steps {
                 script {
                      Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
-                     Author_Name=sh(script: "git show -s --pretty=%ae", returnStdout: true).trim()
                 }
                 echo "${env.BUILD_URL}/console"
                 echo "${env.BUILD_NUMBER}"
-                echo "${Author_ID} and ${Author_Name}"
+                echo "${Author_ID}"
             }
         }
     }
