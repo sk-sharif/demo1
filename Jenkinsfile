@@ -41,13 +41,32 @@
 // }
 
 
-node {
-  wrap([$class: 'BuildUser']) {
-    echo "${env.BUILD_USER}"
-    echo "${env.BUILD_USER_ID}"
-    echo "${env.BUILD_USER_EMAIL}"
-    echo "${env.BUILD_USER_GROUPS}"
-  }
+// node {
+//   wrap([$class: 'BuildUser']) {
+//     echo "${env.BUILD_USER}"
+//     echo "${env.BUILD_USER_ID}"
+//     echo "${env.BUILD_USER_EMAIL}"
+//     echo "${env.BUILD_USER_GROUPS}"
+//   }
+// }
+
+pipeline {
+    agent any
+    options {
+        timestamps()
+    }
+    stages {
+        stage('Test Stage') {
+            steps {
+                checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/Sample_branch']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'TestCredentials', url: '']]]
+                script {
+                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+                     Author_Name=sh(script: "git show -s --pretty=%ae", returnStdout: true).trim()
+                }
+                echo "${Author_ID} and ${Author_Name}"
+            }
+        }
+    }
 }
 
 
