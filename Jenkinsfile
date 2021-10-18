@@ -59,8 +59,10 @@ pipeline {
         stage('Test Stage') {
             steps {
                 script {
-                    echo "${env.BUILD_URL}/console"
-                    echo "${env.BUILD_NUMBER}"
+//                     echo "${env.BUILD_URL}/console"
+//                     echo "${env.BUILD_NUMBER}"
+                    BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
+                    echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
                 }
             }
         }
