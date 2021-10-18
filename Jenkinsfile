@@ -90,11 +90,13 @@ pipeline {
         stage('Test Stage') {
             steps {
                 script {
-                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+                    Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+                    build_id = currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
                 }
                 echo "${env.BUILD_URL}/console"
                 echo "${env.BUILD_NUMBER}"
                 echo "${Author_ID}"
+                echo "${build_id}"
             }
         }
     }
