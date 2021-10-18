@@ -43,10 +43,10 @@
 
 node {
   wrap([$class: 'BuildUser']) {
-    echo "${BUILD_USER}"
-    echo "${BUILD_USER_ID}"
-    echo "${BUILD_USER_EMAIL}"
-    echo "${BUILD_USER_GROUPS}"
+    echo "${env.BUILD_USER}"
+    echo "${env.BUILD_USER_ID}"
+    echo "${env.BUILD_USER_EMAIL}"
+    echo "${env.BUILD_USER_GROUPS}"
   }
 }
 
