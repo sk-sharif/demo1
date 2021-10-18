@@ -91,7 +91,7 @@ pipeline {
             steps {
                 script {
                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
-                    build_id = currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
+                    build_id = getBuildUser()
                 }
                 echo "${env.BUILD_URL}/console"
                 echo "${env.BUILD_NUMBER}"
@@ -102,5 +102,9 @@ pipeline {
     }
 }
 
+@NonCPS
+def getBuildUser() {
+    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
+}
 
 
