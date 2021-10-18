@@ -41,32 +41,32 @@
 // }
 
 
-// node {
-//   wrap([$class: 'BuildUser']) {
-//     echo "${env.BUILD_USER}"
-//     echo "${env.BUILD_USER_ID}"
-//     echo "${env.BUILD_USER_EMAIL}"
-//     echo "${env.BUILD_USER_GROUPS}"
-//   }
-// }
-
-pipeline {
-    agent any
-    options {
-        timestamps()
-    }
-    stages {
-        stage('Test Stage') {
-            steps {
-                script {
-//                     echo "${env.BUILD_URL}/console"
-//                     echo "${env.BUILD_NUMBER}"
-                    BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
-                    echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
-                }
-            }
-        }
-    }
+node {
+  wrap([$class: 'BuildUser']) {
+    echo "${env.BUILD_USER}"
+    echo "${env.BUILD_USER_ID}"
+    echo "${env.BUILD_USER_EMAIL}"
+    echo "${env.BUILD_USER_GROUPS}"
+  }
 }
+
+// pipeline {
+//     agent any
+//     options {
+//         timestamps()
+//     }
+//     stages {
+//         stage('Test Stage') {
+//             steps {
+//                 script {
+// //                     echo "${env.BUILD_URL}/console"
+// //                     echo "${env.BUILD_NUMBER}"
+//                     BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
+//                     echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
