@@ -64,7 +64,7 @@ pipeline {
 //                     echo "${env.BUILD_NUMBER}"
 //                     BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
 //                     echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
-                  sh "BUILD_CAUSE_JSON=$(curl --silent ${BUILD_URL}/api/json | tr "{}" "\n" | grep "Started by")"
+                  sh "BUILD_CAUSE_JSON=$(curl --silent \${BUILD_URL}/api/json | tr "{}" "\n" | grep "Started by")"
                   sh "BUILD_USER_ID=$(echo $BUILD_CAUSE_JSON | tr "," "\n" | grep "userId" | awk -F\" '{print \$4}')"
                   sh "BUILD_USER_NAME=$(echo $BUILD_CAUSE_JSON | tr "," "\n" | grep "userName" | awk -F\" '{print \$4}')"
                   echo "${BUILD_USER_NAME}"
