@@ -9,7 +9,8 @@ pipeline {
 //           shared.invokingApi(branch: "${branch}")
 //           echo "stage 1"
 //           def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause) != null
-          echo "$BUILD_USER_ID"
+//           echo "$BUILD_USER_ID"
+          echo "$BUILD_NUMBER"
 //           echo "${currentBuild.buildCauses}" // same as currentBuild.getBuildCauses()
 //           echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
 //           echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
