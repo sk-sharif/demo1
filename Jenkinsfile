@@ -51,6 +51,36 @@
 //   }
 // }
 
+// pipeline {
+//     agent any
+//     options {
+//         timestamps()
+//     }
+//     stages {
+//         stage('Test Stage') {
+//             steps {
+//                 script {
+// //                     echo "${env.BUILD_URL}/console"
+// //                     echo "${env.BUILD_NUMBER}"
+// //                     BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
+// //                     echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
+// //                   sh "BUILD_CAUSE_JSON=\$(curl --silent \${BUILD_URL}/api/json | tr "{}" '\n' | grep "Started by")"
+// //                   sh "BUILD_USER_ID=\$(echo $BUILD_CAUSE_JSON | tr "," '\n' | grep "userId" | awk -F\" '{print \$4}')"
+// //                   sh "BUILD_USER_NAME=\$(echo $BUILD_CAUSE_JSON | tr "," '\n' | grep "userName" | awk -F\" '{print \$4}')"
+// //                   echo "${BUILD_USER_NAME}"
+//                     wrap([$class: 'BuildUser']) {
+//                       echo "sharif"
+//                       echo "${env.BUILD_USER}"
+//                       echo "${env.BUILD_USER_ID}"
+//                       echo "${env.BUILD_USER_EMAIL}"
+//                       echo "${env.BUILD_USER_GROUPS}"
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
 pipeline {
     agent any
     options {
@@ -59,26 +89,16 @@ pipeline {
     stages {
         stage('Test Stage') {
             steps {
+                checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_pass', url: 'https://github.com/sk-sharif/demo1.git']]]
                 script {
-//                     echo "${env.BUILD_URL}/console"
-//                     echo "${env.BUILD_NUMBER}"
-//                     BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
-//                     echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
-//                   sh "BUILD_CAUSE_JSON=\$(curl --silent \${BUILD_URL}/api/json | tr "{}" '\n' | grep "Started by")"
-//                   sh "BUILD_USER_ID=\$(echo $BUILD_CAUSE_JSON | tr "," '\n' | grep "userId" | awk -F\" '{print \$4}')"
-//                   sh "BUILD_USER_NAME=\$(echo $BUILD_CAUSE_JSON | tr "," '\n' | grep "userName" | awk -F\" '{print \$4}')"
-//                   echo "${BUILD_USER_NAME}"
-                    wrap([$class: 'BuildUser']) {
-                      echo "sharif"
-                      echo "${env.BUILD_USER}"
-                      echo "${env.BUILD_USER_ID}"
-                      echo "${env.BUILD_USER_EMAIL}"
-                      echo "${env.BUILD_USER_GROUPS}"
-                    }
+                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+                     Author_Name=sh(script: "git show -s --pretty=%ae", returnStdout: true).trim()
                 }
+                echo "${Author_ID} and ${Author_Name}"
             }
         }
     }
 }
+
 
 
