@@ -60,6 +60,7 @@ pipeline {
             steps {
                 script {
                     echo "${env.BUILD_URL}/console"
+                    echo "${env.BUILD_NUMBER}"
                 }
             }
         }
