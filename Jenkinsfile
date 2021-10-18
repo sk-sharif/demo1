@@ -41,7 +41,7 @@
 // }
 
 
-node {
+// node {
 //   wrap([$class: 'BuildUser']) {
 //     echo "sharif"
 //     echo "${env.BUILD_USER}"
@@ -49,7 +49,7 @@ node {
 //     echo "${env.BUILD_USER_EMAIL}"
 //     echo "${env.BUILD_USER_GROUPS}"
 //   }
-}
+// }
 
 
 pipeline {
