@@ -60,8 +60,8 @@ def branch = "${env.BRANCH_NAME}"
 //         stage('Test Stage') {
 //             steps {
 //                 script {
-// //                     echo "${env.BUILD_URL}/console"
-// //                     echo "${env.BUILD_NUMBER}"
+//                     echo "${env.BUILD_URL}/console"
+//                     echo "${env.BUILD_NUMBER}"
 // //                     BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
 // //                     echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
 // //                   sh "BUILD_CAUSE_JSON=\$(curl --silent \${BUILD_URL}/api/json | tr "{}" '\n' | grep "Started by")"
@@ -89,11 +89,12 @@ pipeline {
     stages {
         stage('Test Stage') {
             steps {
-//                 checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_pass', url: 'https://github.com/sk-sharif/demo1.git']]]
                 script {
                      Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
                      Author_Name=sh(script: "git show -s --pretty=%ae", returnStdout: true).trim()
                 }
+                echo "${env.BUILD_URL}/console"
+                echo "${env.BUILD_NUMBER}"
                 echo "${Author_ID} and ${Author_Name}"
             }
         }
