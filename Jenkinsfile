@@ -59,7 +59,7 @@ pipeline {
         stage('Test Stage') {
             steps {
                 script {
-                    echo "${env.BUILD_URL}"
+                    echo "${env.BUILD_URL}/console"
                 }
             }
         }
