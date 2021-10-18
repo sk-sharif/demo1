@@ -89,7 +89,7 @@ pipeline {
     stages {
         stage('Test Stage') {
             steps {
-                checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_pass', url: 'https://github.com/sk-sharif/demo1.git']]]
+//                 checkout changelog: true, poll: false, scm: [$class: 'GitSCM', branches: [[name: "*/${branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_pass', url: 'https://github.com/sk-sharif/demo1.git']]]
                 script {
                      Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
                      Author_Name=sh(script: "git show -s --pretty=%ae", returnStdout: true).trim()
