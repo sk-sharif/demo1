@@ -91,7 +91,10 @@ pipeline {
             steps {
                 script {
                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
-                    build_id = getBuildUser()
+                    BUILD_CAUSE_JSON = sh (script: "curl --silent ${BUILD_URL}/api/json | tr '{}' '\n' | grep 'Started by'", returnStdout: true).trim()  
+                    echo "BUILD_CAUSE_JSON: ${BUILD_CAUSE_JSON}"   
+                    BUILD_USER_ID=new groovy.json.JsonSlurper().parseText("{${BUILD_CAUSE_JSON}}").userId   
+                    echo "BUILD_USER_ID: ${BUILD_USER_ID}"
                 }
                 echo "${env.BUILD_URL}/console"
                 echo "${env.BUILD_NUMBER}"
@@ -102,9 +105,9 @@ pipeline {
     }
 }
 
-@NonCPS
-def getBuildUser() {
-    return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
-}
+// @NonCPS
+// def getBuildUser() {
+//     return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
+// }
 
 
