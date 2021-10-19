@@ -1,4 +1,4 @@
-def branch = "${env.BRANCH_NAME}"\
+def branch = "${env.BRANCH_NAME}"
 // // @Library('first-shared-lib') _
 // pipeline {
 //   agent any
