@@ -1,5 +1,4 @@
-def branch = "${env.BRANCH_NAME}"
-def Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+def branch = "${env.BRANCH_NAME}"\
 // // @Library('first-shared-lib') _
 // pipeline {
 //   agent any
@@ -93,14 +92,14 @@ pipeline {
             steps {
                 
                 script {
-//                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
-//                     BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
-//                     echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
+                    Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+                    BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
+                    echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
                     echo "triggered by"
                     echo "${BUILD_USER_ID}"
                 }
-//                 echo "${env.BUILD_URL}/console"
-//                 echo "${env.BUILD_NUMBER}"
+                echo "${env.BUILD_URL}/console"
+                echo "${env.BUILD_NUMBER}"
                 echo "${Author_ID}"
 //                 echo "${build_id}"
             }
