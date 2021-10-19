@@ -86,7 +86,6 @@ pipeline {
     options {
         timestamps()
     }
-    
     stages {
         stage('Test Stage') {
             steps {
