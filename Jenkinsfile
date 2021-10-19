@@ -1,4 +1,5 @@
 def branch = "${env.BRANCH_NAME}"
+def Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
 // // @Library('first-shared-lib') _
 // pipeline {
 //   agent any
@@ -86,7 +87,7 @@ pipeline {
     options {
         timestamps()
     }
-    Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
+    
     stages {
         stage('Test Stage') {
             steps {
