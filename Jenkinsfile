@@ -91,10 +91,8 @@ pipeline {
             steps {
                 script {
                     Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
-                    BUILD_CAUSE_JSON = sh (script: "curl --silent ${BUILD_URL}/api/json | tr '{}' '\n' | grep 'Started by'", returnStdout: true).trim()  
-                    echo "BUILD_CAUSE_JSON: ${BUILD_CAUSE_JSON}"   
-                    BUILD_USER_ID=new groovy.json.JsonSlurper().parseText("{${BUILD_CAUSE_JSON}}").userId   
-                    echo "BUILD_USER_ID: ${BUILD_USER_ID}"
+                    BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
+                    echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
                 }
                 echo "${env.BUILD_URL}/console"
                 echo "${env.BUILD_NUMBER}"
