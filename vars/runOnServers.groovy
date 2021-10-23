@@ -6,6 +6,8 @@ def call(Map config = [:]) {
         println(currentBuild.rawBuild.changeSets) // should print out any changes in the current build
         def changeSet = currentBuild.rawBuild.changeSets
         println(changeSet.size())
+        println(changeSet[0].items)
+        println(changeSet[1].items)
       }
     },
     "StageB": {
