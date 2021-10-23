@@ -3,6 +3,7 @@ def call(Map config = [:]) {
     "StageA": {
       stage("stage A") {
         echo "This is branch a"
+        println(currentBuild.changeSets) // should print out any changes in the current build
       }
     },
     "StageB": {
