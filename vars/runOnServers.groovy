@@ -31,6 +31,5 @@ for (int i = 0; i < changeSet.size(); i++)
                        author += "${entry.author}"
             } 
  }
-  print entries;
  print author;
 }
