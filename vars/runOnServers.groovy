@@ -4,6 +4,8 @@ def call(Map config = [:]) {
       stage("stage A") {
         echo "This is branch a"
         println(currentBuild.rawBuild.changeSets) // should print out any changes in the current build
+        def changeSet = currentBuild.rawBuild.changeSets
+        println(changeSet.size())
       }
     },
     "StageB": {
