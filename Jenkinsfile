@@ -88,15 +88,11 @@ pipeline {
     }
     stages {
         stage('Test Stage') {
-            
-            stages {
-                stage('Building Distributable Package') {
-                    steps {
-                        echo 'Building'
-                    }
+            steps {
+                script {
+                    checking()
                 }
-            }
-            
+            }           
         }
     }
 }
