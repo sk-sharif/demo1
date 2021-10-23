@@ -1,4 +1,4 @@
-def call(Closure closure) {
+def call(Map config = [:]) {
   parallel{
       node("test && san-jose") {
         stage('SanJose') {
