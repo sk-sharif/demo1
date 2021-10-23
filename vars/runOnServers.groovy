@@ -1,5 +1,5 @@
 def call(Closure closure) {
-  parallel({
+  parallel{
       node("test && san-jose") {
         stage('SanJose') {
           echo "SanJose"
@@ -10,5 +10,5 @@ def call(Closure closure) {
           echo "Dallas"
         }
       }  
-    })
+    }
 }
