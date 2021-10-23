@@ -87,9 +87,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                runOnServers {
-                    sh 'run-tests'
-                }
+                runOnServers()
             }
         }
         stage('Release') {
