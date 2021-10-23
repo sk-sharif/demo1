@@ -1,7 +1,13 @@
 name = "sharif"
 
 def call(Map config = [:]) {
-    echo "checking stage 1 Checked ${name}"
+    stages {
+        stage('Building Distributable Package') {
+            steps {
+                echo 'Building'
+            }
+        }
+    }
 }
 
 def calling(Map config = [:]) {
