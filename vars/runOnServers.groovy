@@ -1,11 +1,11 @@
 def call(Map config = [:]) {
   parallel{
-      node("test && san-jose") {
+      node {
         stage('SanJose') {
           echo "SanJose"
         }
       }
-      node('test dallas') {
+      node {
         stage('Dallas') {
           echo "Dallas"
         }
