@@ -1,14 +1,18 @@
 def call(Map config = [:]) {
-  parallel{
+ parallel({
+    SanJose: {
       node {
         stage('SanJose') {
-          echo "SanJose"
+          echo "sanjose"
         }
-      }
+      } 
+    },
+    Dallas: {
       node {
-        stage('Dallas') {
-          echo "Dallas"
+        stage('Dallas') {          
+          echo "dallas"
         }
-      }  
-    }
+      } 
+    } 
+  } 
 }
