@@ -1,5 +1,5 @@
 def branch = "${env.BRANCH_NAME}"
-// // @Library('first-shared-lib') _
+@Library('first-shared-lib') _
 // pipeline {
 //   agent any
 //   stages {
@@ -88,27 +88,15 @@ pipeline {
     }
     stages {
         stage('Test Stage') {
-            steps {
-                
-                script {
-                    Author_ID=sh(script: "git show -s --pretty=%an", returnStdout: true).trim()
-                    BUILD_TRIGGER_BY = "${currentBuild.getBuildCauses()[0].shortDescription} / ${currentBuild.getBuildCauses()[0].userId}"
-                    echo "BUILD_TRIGGER_BY: ${BUILD_TRIGGER_BY}"
-                    echo "triggered by"
-                    echo "${BUILD_USER_ID}"
+            
+            stages {
+                stage('Building Distributable Package') {
+                    steps {
+                        echo 'Building'
+                    }
                 }
-                echo "${env.BUILD_URL}/console"
-                echo "${env.BUILD_NUMBER}"
-                echo "${Author_ID}"
-//                 echo "${build_id}"
             }
+            
         }
     }
 }
-
-// @NonCPS
-// def getBuildUser() {
-//     return currentBuild.rawBuild.getCause(Cause.UserIdCause).getUserId()
-// }
-
-
