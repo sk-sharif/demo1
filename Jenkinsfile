@@ -88,11 +88,11 @@ pipeline {
     }
     stages {
         stage('Test Stage') {
-            steps {
-                script {
+//             steps {
+//                 script {
                     checking()
-                }
-            }           
+//                 }
+//             }           
         }
     }
 }
