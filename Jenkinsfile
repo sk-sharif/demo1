@@ -87,7 +87,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                runOnServers()
+                runOnServers.changeLogs()
             }
         }
         stage('Release') {
