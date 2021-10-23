@@ -93,7 +93,9 @@ pipeline {
             }
         }
         stage('Release') {
-            echo 'release'
+            steps {
+                echo 'release'
+            }
         }
     }
 }
