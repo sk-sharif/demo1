@@ -11,7 +11,11 @@ def call(Map config = [:]) {
 }
 
 def calling(Map config = [:]) {
-    echo "checking stage 2 Checked ${name}"
+    stage('Building Distributable Package') {
+        steps {
+            echo 'Building'
+        }
+    }
 }
 
 def calling1(Map config = [:]) {
