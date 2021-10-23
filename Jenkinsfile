@@ -81,19 +81,19 @@ def branch = "${env.BRANCH_NAME}"
 //     }
 // }
 
+
 pipeline {
     agent any
-    options {
-        timestamps()
-    }
     stages {
-//         stage('Test Stage') {
-//             steps {
-//                 script {
-//                     checking()
-//                 }
-//             }           
-//         }
-        checking.calling()
+        stage('Test') {
+            steps {
+                runOnServers {
+                    sh 'run-tests'
+                }
+            }
+        }
+        stage('Release') {
+            echo 'release'
+        }
     }
 }
