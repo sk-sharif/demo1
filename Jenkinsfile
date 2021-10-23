@@ -88,7 +88,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    runOnServers.changeLogs()
+                    runOnServers()
                 }
             }
         }
