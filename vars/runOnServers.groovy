@@ -6,7 +6,7 @@ def call(Map config = [:]) {
            echo "sanjose"
          }
        } 
-     },
+     }
    Dallas: {
     node {
      stage('Dallas') {          
