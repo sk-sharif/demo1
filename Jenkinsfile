@@ -87,12 +87,13 @@ pipeline {
         timestamps()
     }
     stages {
-        stage('Test Stage') {
+//         stage('Test Stage') {
 //             steps {
 //                 script {
-                    checking()
+//                     checking()
 //                 }
 //             }           
-        }
+//         }
+        checking.calling()
     }
 }
