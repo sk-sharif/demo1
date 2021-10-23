@@ -4,7 +4,7 @@ def call(Closure closure) {
         stage('SanJose') {
           echo "SanJose"
         }
-      },
+      }
       node('test dallas') {
         stage('Dallas') {
           echo "Dallas"
