@@ -131,7 +131,6 @@ properties([
 			filterable: false, 
 			name: 'resource', 
 			randomName: 'choice-parameter-9559427745480', 
-			referencedParameters: 'Region', 
 			script: [
 				$class: 'GroovyScript', 
 				fallbackScript: [
