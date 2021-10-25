@@ -84,7 +84,7 @@
 
 pipeline {
     agent any
-    properties([parameters([choice(choices: ['main'], name: 'branch')])])
+    parameters([choice(choices: ['main'], name: 'branch')])
     stages {
         stage('Test') {
             steps {
