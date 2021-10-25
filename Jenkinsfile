@@ -104,9 +104,11 @@
 
 pipeline {
     agent any
-    options([gitLabConnection(gitLabConnection: '', jobCredentialId: ''), [$class: 'GitlabLogoProperty', repositoryName: ''], parameters([[$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'Region', randomName: 'choice-parameter-5620496790923', referencedParameters: '', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return[\'sagar\',\'sharif\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'resource', randomName: 'choice-parameter-5620502403286', referencedParameters: 'Region', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''if(Region.equals(\'sagar\')){
+    options {
+        ([gitLabConnection(gitLabConnection: '', jobCredentialId: ''), [$class: 'GitlabLogoProperty', repositoryName: ''], parameters([[$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'Region', randomName: 'choice-parameter-5620496790923', referencedParameters: '', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: 'return[\'sagar\',\'sharif\']']]], [$class: 'CascadeChoiceParameter', choiceType: 'PT_SINGLE_SELECT', filterLength: 1, filterable: false, name: 'resource', randomName: 'choice-parameter-5620502403286', referencedParameters: 'Region', script: [$class: 'GroovyScript', fallbackScript: [classpath: [], sandbox: false, script: ''], script: [classpath: [], sandbox: false, script: '''if(Region.equals(\'sagar\')){
   return[\'non-prod-vpc1\',\'non-prod-vpc2\']   
 } ''']]]])])
+    }
     stages {
         stage('Test') {
             steps {
