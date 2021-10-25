@@ -114,8 +114,7 @@ properties([
 				fallbackScript: [
 					classpath: [], 
 					sandbox: false, 
-					script: 
-						'return[\'Could not get Env\']'
+					script: ''
 				], 
 				script: [
 					classpath: [], 
