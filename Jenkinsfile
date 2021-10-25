@@ -19,7 +19,7 @@ properties([
 					classpath: [], 
 					sandbox: false, 
 					script: 
-						'return[\'us-east-1\',\'sharif\']'
+						'return[\'us-east-1\',\'us-shairf-2\']'
 				]
 			]
 		], 
