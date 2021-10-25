@@ -1,4 +1,4 @@
-def branch = "${env.BRANCH_NAME}"
+// def branch = "${env.BRANCH_NAME}"
 @Library('first-shared-lib') _
 // pipeline {
 //   agent any
@@ -84,17 +84,13 @@ def branch = "${env.BRANCH_NAME}"
 
 pipeline {
     agent any
+    properties([[$class: 'JiraProjectProperty'], gitLabConnection(gitLabConnection: '', jobCredentialId: ''), parameters([choice(choices: ['main'], name: 'branch')])])
     stages {
         stage('Test') {
             steps {
                 script {
-                    runOnServers()
+                    echo "${branch}"
                 }
-            }
-        }
-        stage('Release') {
-            steps {
-                echo 'release'
             }
         }
     }
