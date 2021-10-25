@@ -159,6 +159,7 @@ pipeline {
       stage ("Example") {
         steps {
          script{
+		 echo "${params.Region}"
           echo 'Hello'
         
         } 
