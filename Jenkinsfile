@@ -107,8 +107,7 @@ properties([
 			filterLength: 1, 
 			filterable: false, 
 			name: 'Region', 
-			randomName: 'choice-parameter-10146754425170', 
-			referencedParameters: '', 
+			randomName: 'choice-parameter-10146754425170',
 			script: [
 				$class: 'GroovyScript', 
 				fallbackScript: [
