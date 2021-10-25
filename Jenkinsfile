@@ -87,7 +87,7 @@ pipeline {
     parameters {
     choice(
         name: 'myParameter',
-        choices: "main",
+        choices: "main\ndev\nprod",
         description: 'interesting stuff' )
     }
     stages {
