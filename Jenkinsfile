@@ -121,7 +121,7 @@ properties([
 					classpath: [], 
 					sandbox: false, 
 					script: 
-						'return[\'non-prod-vpc1\',\'non-prod-vpc2\']'
+						'return[\'vpc1\',\'vpc2\']'
 				]
 			]
 		], 
