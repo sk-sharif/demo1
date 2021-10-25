@@ -121,7 +121,7 @@ properties([
 					classpath: [], 
 					sandbox: false, 
 					script: 
-						'return[\'sharif\',\'sagar\']'
+						'return[\'us-east-1\',\'us-west-2\',\'us-west-3\']'
 				]
 			]
 		], 
