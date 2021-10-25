@@ -84,16 +84,17 @@
 
 pipeline {
     agent any
-    parameters([choice(choices: ['main'], name: 'branch')])choice(
-      name: 'Env',
-      choices: ['PROD'],
-      description: 'Passing the Environment'
-    )
+    parameters {
+    choice(
+        name: 'myParameter',
+        choices: "Option1\nOption2",
+        description: 'interesting stuff' )
+    }
     stages {
         stage('Test') {
             steps {
                 script {
-                    echo "${params.Env}"
+                    echo "hello"
                 }
             }
         }
