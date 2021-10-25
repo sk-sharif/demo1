@@ -106,7 +106,7 @@ properties([
 		[$class: 'CascadeChoiceParameter', 
 			choiceType: 'PT_SINGLE_SELECT',
 			filterLength: 1, 
-			filterable: true, 
+			filterable: false, 
 			name: 'Region', 
 			randomName: 'choice-parameter-10146754425170',
 			script: [
@@ -126,7 +126,7 @@ properties([
 		[$class: 'CascadeChoiceParameter', 
 			choiceType: 'PT_SINGLE_SELECT', 
 			filterLength: 1, 
-			filterable: true, 
+			filterable: false, 
 			name: 'resource', 
 			randomName: 'choice-parameter-10146774065392', 
 			referencedParameters: 'Region', 
