@@ -87,14 +87,14 @@ pipeline {
     parameters {
     choice(
         name: 'myParameter',
-        choices: "Option1\nOption2",
+        choices: "main",
         description: 'interesting stuff' )
     }
     stages {
         stage('Test') {
             steps {
                 script {
-                    echo "hello"
+                    echo "${params.myParameter}"
                 }
             }
         }
