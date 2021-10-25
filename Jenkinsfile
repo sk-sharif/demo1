@@ -41,9 +41,9 @@ properties([
 					classpath: [], 
 					sandbox: false, 
 					script: 
-'''if(Region.equals(\'us-east-1\')){
-return[\'non-prod-vpc1\',\'non-prod-vpc2\'] 
-}'''
+					'''if(Region.equals(\'us-east-1\')){
+					return[\'non-prod-vpc1\',\'non-prod-vpc2\'] 
+					}'''
 				]
 			]
 		]
