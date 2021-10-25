@@ -100,12 +100,13 @@
 //         }
 //     }
 // }
+
 properties([
 	parameters([
 		[$class: 'CascadeChoiceParameter', 
-			choiceType: 'PT_SINGLE_SELECT', 
+			choiceType: 'PT_SINGLE_SELECT',
 			filterLength: 1, 
-			filterable: false, 
+			filterable: true, 
 			name: 'Region', 
 			randomName: 'choice-parameter-10146754425170',
 			script: [
@@ -118,14 +119,14 @@ properties([
 				script: [
 					classpath: [], 
 					sandbox: false, 
-					script: 'return[\'us-east-1\',\'us-west-2\']'
+					script: 'return["us-east-1","us-west-2"]'
 					]
 				]
 		], 
 		[$class: 'CascadeChoiceParameter', 
 			choiceType: 'PT_SINGLE_SELECT', 
 			filterLength: 1, 
-			filterable: false, 
+			filterable: true, 
 			name: 'resource', 
 			randomName: 'choice-parameter-10146774065392', 
 			referencedParameters: 'Region', 
@@ -140,8 +141,8 @@ properties([
 					classpath: [], 
 					sandbox: false, 
 					script: 
-						'''if(Region.equals(\'us-east-1\')){
-	  						return[\'non-prod-vpc1\',\'non-prod-vpc2\']   
+						'''if(Region.equals("us-east-1")){
+	  						return["non-prod-vpc1","non-prod-vpc2"]   
 	  					} '''
 	  			]
 	  		]
