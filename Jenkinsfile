@@ -84,7 +84,7 @@
 
 pipeline {
     agent any
-    options([[$class: 'JiraProjectProperty'], gitLabConnection(gitLabConnection: '', jobCredentialId: ''), parameters([choice(choices: ['main'], name: 'branch')])])
+    properties([[$class: 'JiraProjectProperty'], gitLabConnection(gitLabConnection: '', jobCredentialId: ''), parameters([choice(choices: ['main'], name: 'branch')])])
     stages {
         stage('Test') {
             steps {
