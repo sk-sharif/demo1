@@ -84,7 +84,7 @@
 
 pipeline {
     agent any
-    properties([[$class: 'JiraProjectProperty'], parameters([choice(choices: ['main'], name: 'branch')])])
+    properties([parameters([choice(choices: ['main'], name: 'branch')])])
     stages {
         stage('Test') {
             steps {
