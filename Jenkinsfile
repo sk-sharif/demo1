@@ -41,7 +41,7 @@ properties([
 					classpath: [], 
 					sandbox: true, 
 					script: 
-					'''if(Region.equals(\'us-east-1\')){
+					'''if(Region.equals(\'bidhan\')){
 return[\'non-prod-vpc1\',\'non-prod-vpc2\'] 
 }'''
 				]
