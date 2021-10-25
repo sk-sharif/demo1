@@ -19,7 +19,7 @@ properties([
 					classpath: [], 
 					sandbox: true, 
 					script: 
-						'return[\'sarose\',\'bidhan\']'
+						'return[\'sarose\',\'bidhan\',\'virat\']'
 				]
 			]
 		], 
