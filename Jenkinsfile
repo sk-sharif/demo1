@@ -121,7 +121,7 @@ properties([
 					classpath: [], 
 					sandbox: false, 
 					script: 
-						'return[\'vpc1\',\'vpc2\']'
+						'return[\'us-east-1\',\'us-west-2\']'
 				]
 			]
 		], 
