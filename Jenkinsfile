@@ -100,7 +100,6 @@
 //         }
 //     }
 // }
-
 properties([
 	parameters([
 		[$class: 'CascadeChoiceParameter', 
@@ -108,8 +107,8 @@ properties([
 			filterLength: 1, 
 			filterable: false, 
 			name: 'Region', 
-			randomName: 'choice-parameter-9559414509244', 
-			referencedParameters: '',
+			randomName: 'choice-parameter-10146754425170', 
+			referencedParameters: '', 
 			script: [
 				$class: 'GroovyScript', 
 				fallbackScript: [
@@ -120,17 +119,16 @@ properties([
 				script: [
 					classpath: [], 
 					sandbox: false, 
-					script: 
-						'return[\'us-east-1\',\'us-west-2\']'
+					script: 'return[\'us-east-1\',\'us-west-2\']'
+					]
 				]
-			]
 		], 
 		[$class: 'CascadeChoiceParameter', 
 			choiceType: 'PT_SINGLE_SELECT', 
 			filterLength: 1, 
 			filterable: false, 
 			name: 'resource', 
-			randomName: 'choice-parameter-9559427745480', 
+			randomName: 'choice-parameter-10146774065392', 
 			referencedParameters: 'Region', 
 			script: [
 				$class: 'GroovyScript', 
@@ -144,12 +142,14 @@ properties([
 					sandbox: false, 
 					script: 
 						'''if(Region.equals(\'us-east-1\')){
-  							return[\'non-prod-vpc1\',\'non-prod-vpc2\']   
-						} '''
-					]
-				]
-			]
-		])])
+	  						return[\'non-prod-vpc1\',\'non-prod-vpc2\']   
+	  					} '''
+	  			]
+	  		]
+  		]
+  	])
+  ])
+
 pipeline {
   
   agent any
