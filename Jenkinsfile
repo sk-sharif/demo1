@@ -94,6 +94,32 @@ pipeline {
 				}
 			}
 		}
+		
+		stage("invoking the orchestration api") {
+			steps {
+				script {
+					echo "1"
+				}
+			}
+		}
+		
+		
+		stage("Triggring integration test") {
+			steps {
+				script {
+					echo "2"
+				}
+			}
+		}
+		
+		
+		stage("Post Build Actions") {
+			steps {
+				script {
+					echo "3"
+				}
+			}
+		}
 	}
 }
 
