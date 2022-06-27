@@ -68,55 +68,12 @@
 
 pipeline {
 	agent any
+	properties(parameters([choice(choices: ['true', 'false'], name: 'verbose')]))
 	stages {
-		stage("1st stage") {
+		stage("choice parameters") {
 			steps {
 				script {
-					echo "1"
-				}
-			}
-		}
-		
-		
-		stage("2nd stage") {
-			steps {
-				script {
-					echo "2"
-				}
-			}
-		}
-		
-		
-		stage("3nd stage") {
-			steps {
-				script {
-					echo "3"
-				}
-			}
-		}
-		
-		stage("invoking the orchestration api") {
-			steps {
-				script {
-					echo "1"
-				}
-			}
-		}
-		
-		
-		stage("Triggring integration test") {
-			steps {
-				script {
-					echo "2"
-				}
-			}
-		}
-		
-		
-		stage("Post Build Actions") {
-			steps {
-				script {
-					echo "3"
+					echo "choosed ${verbose}"	
 				}
 			}
 		}
