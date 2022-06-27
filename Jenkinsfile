@@ -79,7 +79,7 @@ pipeline {
 			steps {
 				script {
 					echo "choosed ${verbose}"
-					shared1.invokingApi(branch: "${branch}",path:"${env.WORKSPACE}",prarameter:"${verbose}")
+					shared1.invokingApi(branch: "main",path:"${env.WORKSPACE}",prarameter:"${verbose}")
 				}
 			}
 		}
