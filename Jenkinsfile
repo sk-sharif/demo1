@@ -71,15 +71,14 @@ pipeline {
 // 	properties(parameters([choice(choices: ['true', 'false'], name: 'verbose')]))
 	parameters {
     		choice(
-			name: 'myParameter',
-			choices: "Option1\nOption2",
-			description: 'interesting stuff' )
+			name: 'verbose',
+			choices: "true\nfalse")
   	}
 	stages {
 		stage("choice parameters") {
 			steps {
 				script {
-					echo "choosed ${myParameter}"	
+					echo "choosed ${verbose}"	
 				}
 			}
 		}
