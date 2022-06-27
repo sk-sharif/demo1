@@ -68,12 +68,18 @@
 
 pipeline {
 	agent any
-	properties(parameters([choice(choices: ['true', 'false'], name: 'verbose')]))
+// 	properties(parameters([choice(choices: ['true', 'false'], name: 'verbose')]))
+	parameters {
+    		choice(
+			name: 'myParameter',
+			choices: "Option1\nOption2",
+			description: 'interesting stuff' )
+  	}
 	stages {
 		stage("choice parameters") {
 			steps {
 				script {
-					echo "choosed ${verbose}"	
+					echo "choosed ${myParameter}"	
 				}
 			}
 		}
