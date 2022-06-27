@@ -65,7 +65,7 @@
 // }
 
 
-
+@Library('first-shared-lib') _
 pipeline {
 	agent any
 // 	properties(parameters([choice(choices: ['true', 'false'], name: 'verbose')]))
