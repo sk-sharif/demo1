@@ -78,7 +78,8 @@ pipeline {
 		stage("choice parameters") {
 			steps {
 				script {
-					echo "choosed ${verbose}"	
+					echo "choosed ${verbose}"
+					shared1.invokingApi(branch: "${branch}",path:"${env.WORKSPACE}",prarameter:"${verbose}")
 				}
 			}
 		}
